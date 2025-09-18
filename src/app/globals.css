@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap');
 @import "tailwindcss";
 
 /* Tailwind v4 theme tokens to support utilities like bg-background, text-foreground, border-border */
@@ -170,23 +169,35 @@
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
+  font-size-adjust: 0.5; /* Improve fallback font metric matching to reduce reflow while Inter loads */
   background: var(--bg-primary);
   color: var(--text-primary);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden; /* prevent accidental horizontal scroll */
 }
+html { overflow-x: hidden; }
 
 .portfolio-container {
   min-height: 100vh;
   background: var(--bg-primary);
 }
 
+/* Media elements should never overflow horizontally */
+img, video, svg, canvas, iframe {
+  max-width: 100%;
+  height: auto;
+}
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 var(--space-md);
+  /* Use fluid inline padding for consistent feel across viewport widths */
+  padding-left: clamp(12px, 4vw, 24px);
+  padding-right: clamp(12px, 4vw, 24px);
+  width: 100%;
 }
 
 /* Tailwind base layers */
@@ -235,6 +246,8 @@ body {
   display: flex;
   gap: var(--space-lg);
 }
+.desktop-only { display: flex; }
+.mobile-toggle { display: none; }
 .nav-link {
   background: none;
   border: none;
@@ -253,8 +266,30 @@ body {
   border: 1px solid var(--border-subtle);
   color: var(--text-muted);
   transition: all 0.2s ease;
+  padding: 8px; /* ensure inner icon/text has breathing room */
 }
 .control-btn:hover { background: var(--accent-primary); color: var(--bg-primary); transform: translateY(-2px); }
+
+/* Mobile dropdown menu (hidden by default) */
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  gap: var(--space-sm);
+  padding: var(--space-md);
+  background: rgba(17, 17, 19, 0.95);
+  border-bottom: 1px solid var(--border-subtle);
+  backdrop-filter: blur(16px);
+}
+.mobile-menu.open { display: flex; }
+.mobile-link {
+  background: none;
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  border-radius: var(--radius-sm);
+  padding: var(--space-sm) var(--space-md);
+  text-align: left;
+}
+.mobile-link:hover { color: var(--accent-primary); border-color: var(--accent-primary); }
 
 /* Section common */
 .section-header { text-align: center; margin-bottom: var(--space-2xl); }
@@ -281,6 +316,7 @@ body {
   border-radius: var(--radius-lg);
   overflow: hidden;
   transition: all 0.3s ease;
+  width: 100%;
 }
 .project-card:hover { transform: translateY(-6px); box-shadow: 0 25px 50px rgba(0,0,0,0.4); border-color: var(--accent-primary); }
 .project-image { height: 200px; position: relative; overflow: hidden; background: var(--bg-tertiary); }
@@ -318,6 +354,7 @@ body {
 .contact-section { padding: var(--space-2xl) 0; }
 .contact-content { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-2xl); margin-top: var(--space-2xl); }
 .contact-form-card { background: var(--bg-secondary); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); }
+.contact-form-card { width: 100%; }
 .form-content { padding: var(--space-xl); }
 .form-header { margin-bottom: var(--space-xl); }
 .form-title { font-size: 28px; font-weight: 600; color: var(--text-primary); margin-bottom: var(--space-sm); }
@@ -327,21 +364,112 @@ body {
 .form-group { display: flex; flex-direction: column; gap: var(--space-xs); }
 .form-group label { font-size: 14px; font-weight: 600; color: var(--text-primary); }
 .form-actions { margin-top: var(--space-md); display: flex; flex-direction: column; gap: var(--space-md); }
+.form-alternative {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  color: var(--text-muted);
+  font-size: 14px;
+  margin-top: var(--space-md);
+}
+.form-alternative::before,
+.form-alternative::after {
+  content: '';
+  flex: 1 1 0;
+  height: 1px;
+  background: var(--border-subtle);
+}
+.form-alternative span { padding: 0 var(--space-xs); }
+.contact-form input,
+.contact-form textarea {
+  /* Ensure generous inner spacing so placeholder/text don't touch borders */
+  padding: var(--space-sm) var(--space-lg);
+}
 .submit-btn { background: var(--accent-primary); color: var(--bg-primary); border: none; border-radius: var(--radius-md); padding: var(--space-md) var(--space-lg); font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.2s ease; display: flex; align-items: center; justify-content: center; gap: var(--space-sm); min-height: 52px; }
 .submit-btn:hover:not(:disabled) { background: var(--accent-hover); transform: translateY(-2px); }
 .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
 
 /* Responsive tweaks */
 @media (max-width: 768px) {
-  .container { padding: 0 var(--space-sm); }
+  /* container uses clamp padding globally */
   .projects-grid { grid-template-columns: 1fr; }
   .section-title { font-size: 36px; }
   .header-content { height: 60px; }
+  .navigation { gap: var(--space-md); }
+  .nav-link { padding: var(--space-xs); font-size: 14px; }
+  .header-controls { gap: var(--space-xs); }
+  .control-btn { width: 36px; height: 36px; }
+  /* Hide desktop nav, show hamburger */
+  .desktop-only { display: none; }
+  .mobile-toggle { display: inline-flex; }
+  /* Add a bit more safe padding just for header so toggle doesn't hug the edge */
+  .header .container {
+    padding-left: clamp(16px, 6vw, 28px);
+    padding-right: clamp(16px, 6vw, 28px);
+  }
+  /* Align mobile dropdown menu with container padding */
+  .mobile-menu {
+    padding-left: clamp(16px, 6vw, 28px);
+    padding-right: clamp(16px, 6vw, 28px);
+  }
+
+  /* Compact paddings for cards/sections on tablet & down */
+  .project-content { padding: var(--space-lg); }
+  .tech-card-content { padding: var(--space-lg); }
+  .service-content { padding: var(--space-lg); }
+  .advantages-section { padding: var(--space-lg); }
+  .method-content { padding: var(--space-lg); }
+  .form-content { padding: var(--space-lg); }
+  .form-header { margin-bottom: var(--space-lg); }
+  .form-title { margin-bottom: var(--space-sm); }
+  .cta-button { padding: var(--space-sm) var(--space-md); min-height: 48px; }
+  .btn-secondary { padding: 12px 20px; min-height: 48px; }
+  /* Stack form inputs to single column on tablet & down */
   .form-row { grid-template-columns: 1fr; }
+  /* Stack contact grid */
+  .contact-content { grid-template-columns: 1fr; gap: var(--space-lg); }
+  /* Ensure Contact section never looks flush to right edge */
+  .contact-section .container {
+    padding-left: clamp(14px, 5vw, 24px);
+    padding-right: clamp(14px, 5vw, 24px);
+  }
+  /* Project CTA safe inline padding */
+  .projects-cta { padding-left: clamp(14px, 5vw, 24px); padding-right: clamp(14px, 5vw, 24px); }
 }
 
 @media (max-width: 480px) {
   .section-title { font-size: 28px; }
+  .section-description { font-size: 14px; }
+  .logo-text { font-size: 20px; }
+  .navigation { gap: var(--space-sm); }
+  .nav-link { font-size: 13px; padding: 6px; }
+  .control-btn { width: 34px; height: 34px; }
+  /* container uses clamp padding globally */
+  /* Slightly larger padding on header for tiny phones */
+  .header .container {
+    padding-left: clamp(18px, 7vw, 30px);
+    padding-right: clamp(18px, 7vw, 30px);
+  }
+  .mobile-menu {
+    padding-left: clamp(18px, 7vw, 30px);
+    padding-right: clamp(18px, 7vw, 30px);
+  }
+
+  /* Further tighten paddings for small phones */
+  .project-content,
+  .tech-card-content,
+  .service-content,
+  .advantages-section,
+  .method-content,
+  .form-content { padding: var(--space-md); }
+
+  /* Make contact form actions stack nicely */
+  .form-actions { gap: var(--space-sm); }
+  .submit-btn, .whatsapp-btn, .project-btn { width: 100%; }
+  .hero-actions { flex-direction: column; }
+  /* Comfort layout for contact method cards on tiny phones */
+  .method-content { flex-direction: column; align-items: flex-start; gap: var(--space-md); }
+  .method-action { width: 100%; justify-content: center; }
 }
 
 /* ===== Hero Section (ported for pixel parity) ===== */
@@ -350,6 +478,7 @@ body {
   min-height: 100vh;
   display: flex;
   align-items: center;
+  contain: layout paint; /* isolate hero to reduce cross-section layout work */
 }
 .hero-content {
   display: grid;
@@ -419,9 +548,16 @@ body {
 
 /* Hero image + floating elements */
 .hero-image { display: flex; justify-content: center; align-items: center; }
-.image-container { position: relative; width: 400px; height: 400px; }
+.image-container {
+  position: relative;
+  width: min(400px, 100%);
+  aspect-ratio: 1 / 1; /* keep square without fixed height */
+  height: auto;
+}
 .profile-image-placeholder {
-  width: 100%; height: 100%;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
   background: var(--bg-secondary);
   border: 2px solid var(--border-primary);
   border-radius: var(--radius-xl);
@@ -436,6 +572,7 @@ body {
 }
 .floating-elements { position: absolute; inset: 0; }
 .floating-element { position: absolute; width: 60px; height: 60px; background: var(--accent-bg); border: 1px solid var(--accent-primary); border-radius: var(--radius-sm); animation: float 6s ease-in-out infinite; }
+.floating-element { will-change: transform; }
 .element-1 { top: 20%; left: 10%; animation-delay: 0s; }
 .element-2 { top: 60%; right: 15%; animation-delay: 2s; }
 .element-3 { bottom: 20%; left: 20%; animation-delay: 4s; }
@@ -511,6 +648,7 @@ body {
   border-radius: var(--radius-lg);
   transition: all 0.3s ease;
   height: 100%;
+  width: 100%;
 }
 .service-card:hover { transform: translateY(-4px); border-color: var(--accent-primary); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
 
@@ -555,6 +693,24 @@ body {
 .method-action.secondary { background: transparent; color: var(--text-primary); border: 2px solid var(--border-primary); }
 .method-action.secondary:hover { border-color: var(--accent-primary); color: var(--accent-primary); background: var(--accent-bg); }
 
+/* Ensure consistent padding for contact method buttons */
+.method-action {
+  padding: var(--space-sm) var(--space-md);
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+/* WhatsApp button in form actions consistency */
+.whatsapp-btn {
+  padding: var(--space-sm) var(--space-md);
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
 /* ===== Contact (left grid) spacing fix for pixel parity ===== */
 .contact-methods {
   display: flex;
@@ -574,6 +730,18 @@ body {
 .footer { background: var(--bg-secondary); border-top: 1px solid var(--border-subtle); padding: var(--space-2xl) 0 var(--space-xl); margin-top: var(--space-2xl); }
 .footer-content { display: flex; flex-direction: column; gap: var(--space-2xl); }
 .footer-main { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: var(--space-2xl); }
+/* Improve initial rendering by letting the browser skip layout/paint for offscreen sections */
+@supports (content-visibility: auto) {
+  .projects-section,
+  .tech-stack-section,
+  .services-section,
+  .contact-section,
+  .footer {
+    content-visibility: auto;
+    /* Provide a conservative placeholder size to prevent layout jumps */
+    contain-intrinsic-size: 1px 1000px;
+  }
+}
 .footer-brand { display: flex; flex-direction: column; gap: var(--space-lg); }
 .brand-name { font-size: 24px; font-weight: 700; color: var(--accent-primary); margin-bottom: var(--space-xs); }
 .brand-tagline { font-size: 16px; font-weight: 600; color: var(--text-primary); margin-bottom: var(--space-sm); }

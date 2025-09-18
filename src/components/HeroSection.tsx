@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { ArrowRight, Download, MessageCircle } from 'lucide-react';
-import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { translations } from '@/data/translations';
 
@@ -10,17 +9,10 @@ const HeroSection = () => {
   const { language } = useLanguage();
   const t = translations[language] || translations['en'];
 
-  const handleScheduleConsultation = () => {
-    const message = language === 'id' 
-      ? 'Halo Arizal, saya ingin menjadwalkan konsultasi tentang layanan pengembangan web.'
-      : 'Hi Arizal, I\'d like to schedule a consultation about web development services.';
-    window.open(`https://wa.me/6288809635936?text=${encodeURIComponent(message)}`, '_blank');
-  };
-
-  const handleDownloadCV = () => {
-    // Mock CV download - will be replaced with actual CV link
-    console.log('Downloading CV...');
-  };
+  const waText = language === 'id'
+    ? 'Halo Arizal, saya ingin menjadwalkan konsultasi tentang layanan pengembangan web.'
+    : "Hi Arizal, I'd like to schedule a consultation about web development services.";
+  const waHref = `https://wa.me/6288809635936?text=${encodeURIComponent(waText)}`;
 
   return (
     <section className="hero-section" id="hero">
@@ -59,23 +51,27 @@ const HeroSection = () => {
             </div>
 
             <div className="hero-actions">
-              <Button 
-                className="btn-primary hero-cta"
-                onClick={handleScheduleConsultation}
+              <a
+                href={waHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary hero-cta inline-flex items-center gap-2"
+                aria-label={t.hero.cta.consultation}
               >
                 <MessageCircle className="h-5 w-5" />
                 {t.hero.cta.consultation}
                 <ArrowRight className="h-4 w-4" />
-              </Button>
-              
-              <Button 
-                variant="outline"
-                className="btn-secondary"
-                onClick={handleDownloadCV}
+              </a>
+
+              <a
+                href="/cv.pdf"
+                className="btn-secondary inline-flex items-center gap-2"
+                download
+                aria-label={t.hero.cta.download}
               >
                 <Download className="h-4 w-4" />
                 {t.hero.cta.download}
-              </Button>
+              </a>
             </div>
           </div>
 

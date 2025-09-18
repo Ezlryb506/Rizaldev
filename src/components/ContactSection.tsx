@@ -174,7 +174,7 @@ const ContactSection = () => {
                           <FormItem className="form-group">
                             <FormLabel>{t.contact.form.fields.name}</FormLabel>
                             <FormControl>
-                              <Input placeholder={t.contact.form.placeholders.name} {...field} />
+                              <Input className="px-5 py-3" placeholder={t.contact.form.placeholders.name} {...field} />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -187,7 +187,7 @@ const ContactSection = () => {
                           <FormItem className="form-group">
                             <FormLabel>{t.contact.form.fields.email}</FormLabel>
                             <FormControl>
-                              <Input type="email" placeholder={t.contact.form.placeholders.email} {...field} />
+                              <Input className="px-5 py-3" type="email" placeholder={t.contact.form.placeholders.email} {...field} />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -203,7 +203,7 @@ const ContactSection = () => {
                           <FormItem className="form-group">
                             <FormLabel>{t.contact.form.fields.company}</FormLabel>
                             <FormControl>
-                              <Input placeholder={t.contact.form.placeholders.company} {...field} />
+                              <Input className="px-5 py-3" placeholder={t.contact.form.placeholders.company} {...field} />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -216,7 +216,7 @@ const ContactSection = () => {
                           <FormItem className="form-group">
                             <FormLabel>{t.contact.form.fields.budget}</FormLabel>
                             <FormControl>
-                              <Input placeholder={t.contact.form.placeholders.budget} {...field} />
+                              <Input className="px-5 py-3" placeholder={t.contact.form.placeholders.budget} {...field} />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -231,7 +231,7 @@ const ContactSection = () => {
                         <FormItem className="form-group">
                           <FormLabel>{t.contact.form.fields.timeline}</FormLabel>
                           <FormControl>
-                            <Input placeholder={t.contact.form.placeholders.timeline} {...field} />
+                            <Input className="px-5 py-3" placeholder={t.contact.form.placeholders.timeline} {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -246,7 +246,7 @@ const ContactSection = () => {
                         render={({ field }) => (
                           <FormItem>
                             <FormControl>
-                              <Textarea placeholder={t.contact.form.placeholders.message} rows={5} {...field} />
+                              <Textarea className="px-5 py-4" placeholder={t.contact.form.placeholders.message} rows={5} {...field} />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
