@@ -6,14 +6,18 @@ import { Card, CardContent } from '@/components/ui/card';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { translations } from '@/data/translations';
 
-const serviceIcons = {
+// Derive strong types for keys from the English translation shape (keys are consistent across locales)
+type ServiceKey = keyof typeof translations.en.services.list;
+type AdvantageKey = keyof typeof translations.en.services.advantages.list;
+
+const serviceIcons: Record<ServiceKey, React.ReactNode> = {
   webDev: <Globe className="h-8 w-8" />,
   frontend: <Zap className="h-8 w-8" />,
   integration: <Puzzle className="h-8 w-8" />,
   consultation: <Brain className="h-8 w-8" />,
 };
 
-const advantageIcons = {
+const advantageIcons: Record<AdvantageKey, React.ReactNode> = {
   speed: <Clock className="h-6 w-6" />,
   quality: <Shield className="h-6 w-6" />,
   innovation: <Lightbulb className="h-6 w-6" />,
@@ -24,14 +28,17 @@ const ServicesSection = () => {
   const { language } = useLanguage();
   const t = translations[language] || translations['en'];
 
-  const services = Object.entries(t.services.list).map(([key, value]) => ({
-    ...value,
+  // Use typed keys to avoid string index errors
+  const serviceKeys = Object.keys(t.services.list) as ServiceKey[];
+  const services = serviceKeys.map((key) => ({
+    ...t.services.list[key],
     key,
     icon: serviceIcons[key],
   }));
 
-  const advantages = Object.entries(t.services.advantages.list).map(([key, value]) => ({
-    ...value,
+  const advantageKeys = Object.keys(t.services.advantages.list) as AdvantageKey[];
+  const advantages = advantageKeys.map((key) => ({
+    ...t.services.advantages.list[key],
     key,
     icon: advantageIcons[key],
   }));
