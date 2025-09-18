@@ -741,6 +741,11 @@ img, video, svg, canvas, iframe {
     /* Provide a conservative placeholder size to prevent layout jumps */
     contain-intrinsic-size: 1px 1000px;
   }
+  /* Allow hero image column to be skipped until needed (no visual change) */
+  .hero-image {
+    content-visibility: auto;
+    contain-intrinsic-size: 360px 420px;
+  }
 }
 .footer-brand { display: flex; flex-direction: column; gap: var(--space-lg); }
 .brand-name { font-size: 24px; font-weight: 700; color: var(--accent-primary); margin-bottom: var(--space-xs); }

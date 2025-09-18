@@ -1,13 +1,25 @@
 'use client';
 
 import React from 'react';
-import { ArrowRight, Download, MessageCircle } from 'lucide-react';
+import dynamic from 'next/dynamic';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { translations } from '@/data/translations';
 
 const HeroSection = () => {
   const { language } = useLanguage();
   const t = translations[language] || translations['en'];
+
+  // Defer non-critical icons to client to reduce server HTML size and initial work
+  const MessageCircleIcon = dynamic(() => import('lucide-react').then(m => m.MessageCircle), { ssr: false });
+  const DownloadIcon = dynamic(() => import('lucide-react').then(m => m.Download), { ssr: false });
+  const ArrowRightIcon = dynamic(() => import('lucide-react').then(m => m.ArrowRight), { ssr: false });
+
+  // Defer decorative floating elements until after first paint
+  const [showDecor, setShowDecor] = React.useState(false);
+  React.useEffect(() => {
+    const id = window.requestAnimationFrame(() => setShowDecor(true));
+    return () => window.cancelAnimationFrame(id);
+  }, []);
 
   const waText = language === 'id'
     ? 'Halo Arizal, saya ingin menjadwalkan konsultasi tentang layanan pengembangan web.'
@@ -58,9 +70,14 @@ const HeroSection = () => {
                 className="btn-primary hero-cta inline-flex items-center gap-2"
                 aria-label={t.hero.cta.consultation}
               >
-                <MessageCircle className="h-5 w-5" />
+                {/* fixed-size placeholder to avoid CLS while icon loads */}
+                <span className="inline-block h-5 w-5" aria-hidden="true">
+                  <MessageCircleIcon className="h-5 w-5" />
+                </span>
                 {t.hero.cta.consultation}
-                <ArrowRight className="h-4 w-4" />
+                <span className="inline-block h-4 w-4" aria-hidden="true">
+                  <ArrowRightIcon className="h-4 w-4" />
+                </span>
               </a>
 
               <a
@@ -69,7 +86,9 @@ const HeroSection = () => {
                 download
                 aria-label={t.hero.cta.download}
               >
-                <Download className="h-4 w-4" />
+                <span className="inline-block h-4 w-4" aria-hidden="true">
+                  <DownloadIcon className="h-4 w-4" />
+                </span>
                 {t.hero.cta.download}
               </a>
             </div>
@@ -82,11 +101,13 @@ const HeroSection = () => {
                   <div className="placeholder-avatar">
                     <span>AW</span>
                   </div>
-                  <div className="floating-elements">
-                    <div className="floating-element element-1"></div>
-                    <div className="floating-element element-2"></div>
-                    <div className="floating-element element-3"></div>
-                  </div>
+                  {showDecor && (
+                    <div className="floating-elements" aria-hidden="true">
+                      <div className="floating-element element-1"></div>
+                      <div className="floating-element element-2"></div>
+                      <div className="floating-element element-3"></div>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
