@@ -12,7 +12,7 @@ export const translations = {
     // Hero Section
     hero: {
       greeting: "Hello, I'm",
-      name: 'Arizal Winangun',
+      name: 'Arizal',
       role: 'Fullstack Developer',
       specialization: 'Specializing in',
       aiWorkflows: 'AI-Assisted Workflows',
@@ -42,7 +42,7 @@ export const translations = {
       },
       highlight: {
         title: 'AI-Powered Development Advantage',
-        description: 'By integrating AI tools like GitHub Copilot, Cursor IDE, and advanced prompt engineering, I deliver projects 40% faster while maintaining exceptional code quality and best practices.'
+        description: 'By integrating AI tools like LLMs, Cursor IDE, Code Agentic, and advanced prompt engineering, I deliver projects 40% faster while maintaining exceptional code quality and best practices.'
       }
     },
     
@@ -70,21 +70,31 @@ export const translations = {
           status: 'Live',
           description: 'A ticketing platform with secure checkout, event management, and real-time updates.',
           features: [
-            'Secure payments with Stripe',
-            'Event listing & search',
-            'Responsive UI with Tailwind',
+            'Admin Dashboard',
+            'User Dashboard',
+            'Events Search',
+            'Events Management',
+            'Mobile Responsive',
             'Role-based access',
+            'Real-time updates',
+            'QR Code & Print Ticket',
           ],
         },
         abadiJaya: {
           title: 'Abadi Jaya – Company Profile Website',
           status: 'Completed',
-          description: 'A fast, SEO-friendly company profile with services, portfolio, and contact integration.',
+          description: 'A fast, SEO-friendly company profile with products catalog, services, portfolio, and usefull dashboard pages',
           features: [
+            'Helpfull Admin & User Dashboard',
+            'Products Catalog',
+            'Products & Services Management',
+            'Contact and Address Map',
+            'Services Review System',
             'SEO optimized pages',
-            'Contact form with validation',
-            'Responsive layout',
-            'Deployed on Vercel',
+            'Products & Services Search',
+            'Mobile Responsive',
+            'Data & Image Storage on Supabase',
+            'Deployed on Vercel (CI/CD)',
           ],
         },
       },
@@ -99,28 +109,28 @@ export const translations = {
           title: 'Custom Web App Development',
           description: 'Full-stack web applications tailored to your business needs, built with modern technologies and AI-assisted development workflows.',
           features: ['Custom functionality', 'Scalable architecture', 'Modern UI/UX', 'Mobile responsive'],
-          pricing: 'Starting from $2,000',
-          timeline: '2-8 weeks'
+          pricing: 'Starting from $100',
+          timeline: '1-8 weeks'
         },
         frontend: {
           title: 'High-Speed Frontend & Landing Pages',
           description: 'Lightning-fast, conversion-optimized landing pages and frontends that engage users and drive business results.',
           features: ['Performance optimized', 'SEO friendly', 'Conversion focused', 'A/B test ready'],
-          pricing: 'Starting from $800',
+          pricing: 'Starting from $10',
           timeline: '1-3 weeks'
         },
         integration: {
           title: 'API & System Integration',
           description: 'Seamlessly connect your existing systems, third-party services, and databases for improved workflow efficiency.',
           features: ['RESTful APIs', 'Database integration', 'Third-party services', 'Data synchronization'],
-          pricing: 'Starting from $1,200',
+          pricing: 'Starting from $100',
           timeline: '1-4 weeks'
         },
         consultation: {
           title: 'AI Strategy Consultation',
           description: 'Strategic guidance on implementing AI tools and workflows to accelerate your development process and business operations.',
           features: ['Workflow analysis', 'AI tool recommendation', 'Implementation strategy', 'Training & support'],
-          pricing: 'Starting from $150/hour',
+          pricing: 'Starting from $5/hour',
           timeline: 'Flexible'
         }
       },
@@ -150,7 +160,7 @@ export const translations = {
     // Contact Section
     contact: {
       title: "Let's Build Something Amazing Together",
-      description: "Ready to accelerate your web development project with AI-assisted workflows? Let's discuss your requirements and explore how I can help your business grow.",
+      description: "Ready to accelerate your web development project with AI-assisted workflows? Let's discuss your requirements and explore how I can help your business website grow.",
       methods: {
         whatsapp: {
           title: 'WhatsApp Consultation',
@@ -183,7 +193,7 @@ export const translations = {
           name: 'Your full name',
           email: 'your.email@company.com',
           company: 'Your company name',
-          budget: 'e.g., $5,000 - $10,000',
+          budget: 'e.g., $100 - $500',
           timeline: 'e.g., 2-3 months, ASAP, Flexible',
           message: 'Describe your project requirements, goals, and any specific features you need...'
         },
@@ -239,8 +249,8 @@ export const translations = {
       name: 'Arizal Winangun',
       role: 'Fullstack Developer',
       specialization: 'Spesialisasi dalam',
-      aiWorkflows: 'Alur Kerja Berbantuan AI',
-      description: 'Memanfaatkan alur kerja berbantuan AI untuk merancang, membangun, dan menyebarkan aplikasi web berkinerja tinggi dengan kecepatan dan kualitas superior. Saya menggabungkan teknologi mutakhir dengan praktik pengembangan terbukti untuk memberikan solusi digital yang luar biasa.',
+      aiWorkflows: 'Alur Kerja Berbasis AI',
+      description: 'Memanfaatkan alur kerja berbasis AI untuk merancang, membangun, dan menciptakan aplikasi web berkinerja tinggi dengan kecepatan dan kualitas superior. Saya menggabungkan teknologi mutakhir dengan praktik pengembangan terbaru untuk memberikan solusi digital yang lebih baik.',
       stats: {
         experience: 'Tahun Pengalaman',
         projects: 'Proyek Selesai',
@@ -255,7 +265,7 @@ export const translations = {
     // Tech Stack Section
     techStack: {
       title: 'Tech Stack & Keahlian',
-      description: 'Memanfaatkan teknologi modern dan alat bertenaga AI untuk membangun aplikasi web yang luar biasa',
+      description: 'Memanfaatkan teknologi modern dan alat bertenaga AI untuk membangun aplikasi web yang lebih baik',
       categories: {
         frontend: 'Frontend',
         backend: 'Backend',
@@ -266,7 +276,7 @@ export const translations = {
       },
       highlight: {
         title: 'Keunggulan Pengembangan Bertenaga AI',
-        description: 'Dengan mengintegrasikan alat AI seperti GitHub Copilot, Cursor IDE, dan rekayasa prompt tingkat lanjut, saya dapat menyelesaikan proyek 40% lebih cepat sambil mempertahankan kualitas kode yang luar biasa dan praktik terbaik.'
+        description: 'Dengan mengintegrasikan alat AI seperti LLMs, Cursor IDE, Code Agent, dan rekayasa prompt tingkat lanjut, saya dapat menyelesaikan proyek 40% lebih cepat sambil mempertahankan kualitas kode yang profesional dan praktik terbaik.'
       }
     },
     
@@ -292,22 +302,32 @@ export const translations = {
         quicktix: {
           title: 'QuickTix – Platform Tiketing Modern',
           status: 'Live',
-          description: 'Platform tiket dengan checkout aman, manajemen event, dan pembaruan real-time.',
+          description: 'Platform tiket dengan pencarian event, manajemen event, dan pembaruan real-time.',
           features: [
-            'Pembayaran aman dengan Stripe',
-            'Daftar & pencarian event',
-            'UI responsif dengan Tailwind',
-            'Akses berbasis peran',
+            'Dashboard Admin Informatif & Interaktif',
+            'Dashboard User Informatif & Interaktif',
+            'Pencarian Event',
+            'Manajemen Event',
+            'Mobile Responsif',
+            'Akses berbasis Role',
+            'Pembaruan Real-Time',
+            'QR Code & Cetak Tiket',
           ],
         },
         abadiJaya: {
           title: 'Abadi Jaya – Website Company Profile',
           status: 'Completed',
-          description: 'Profil perusahaan yang cepat dan SEO-friendly dengan layanan, portofolio, dan kontak.',
+          description: 'Profil perusahaan yang cepat, SEO-Optimal, dengan halaman katalog produk, jasa, portofolio dan halaman dashboard yang membantu proses bisnis.',
           features: [
-            'Halaman dioptimalkan SEO',
-            'Form kontak dengan validasi',
-            'Layout responsif',
+            'Dashboard yang Membantu Proses Bisnis',
+            'Katalog Produk',
+            'Manajemen Produk & Jasa',
+            'Peta Alamat & Kontak',
+            'Sistem Review Jasa',
+            'Halaman Optimal SEO (Programatic SEO)',
+            'Pencarian Produk & Layanan',
+            'Mobile Responsif',
+            'Penyimpanan Data & Gambar di Supabase',
             'Deploy di Vercel',
           ],
         },
@@ -323,28 +343,28 @@ export const translations = {
           title: 'Pengembangan Aplikasi Web Kustom',
           description: 'Aplikasi web full-stack yang disesuaikan dengan kebutuhan bisnis Anda, dibangun dengan teknologi modern dan alur kerja pengembangan berbantuan AI.',
           features: ['Fungsionalitas kustom', 'Arsitektur skalabel', 'UI/UX modern', 'Responsif mobile'],
-          pricing: 'Mulai dari $2,000',
-          timeline: '2-8 minggu'
+          pricing: 'Mulai dari Rp. 1.5 Jt',
+          timeline: '1-8 minggu'
         },
         frontend: {
           title: 'Frontend & Landing Page Berkecepatan Tinggi',
           description: 'Landing page dan frontend yang sangat cepat dan dioptimalkan untuk konversi yang menarik pengguna dan mendorong hasil bisnis.',
           features: ['Dioptimalkan performa', 'SEO friendly', 'Fokus konversi', 'Siap A/B test'],
-          pricing: 'Mulai dari $800',
+          pricing: 'Mulai dari Rp. 300k',
           timeline: '1-3 minggu'
         },
         integration: {
           title: 'Integrasi API & Sistem',
           description: 'Menghubungkan dengan mulus sistem yang ada, layanan pihak ketiga, dan database untuk meningkatkan efisiensi alur kerja.',
           features: ['RESTful APIs', 'Integrasi database', 'Layanan pihak ketiga', 'Sinkronisasi data'],
-          pricing: 'Mulai dari $1,200',
+          pricing: 'Mulai dari Rp. 1.5 Jt',
           timeline: '1-4 minggu'
         },
         consultation: {
           title: 'Konsultasi Strategi AI',
           description: 'Panduan strategis tentang penerapan alat dan alur kerja AI untuk mempercepat proses pengembangan dan operasi bisnis Anda.',
           features: ['Analisis alur kerja', 'Rekomendasi alat AI', 'Strategi implementasi', 'Pelatihan & dukungan'],
-          pricing: 'Mulai dari $150/jam',
+          pricing: 'Mulai dari Rp. 75k /jam',
           timeline: 'Fleksibel'
         }
       },
@@ -357,7 +377,7 @@ export const translations = {
           },
           quality: {
             title: 'Kualitas Enterprise',
-            description: 'Praktik terbukti memastikan solusi yang skalabel, dapat dipelihara, dan aman'
+            description: 'Praktik dapat memastikan solusi yang skalabel, dapat dipelihara, dan aman'
           },
           innovation: {
             title: 'Fokus Inovasi',
@@ -373,8 +393,8 @@ export const translations = {
     
     // Contact Section
     contact: {
-      title: 'Mari Bangun Sesuatu yang Luar Biasa Bersama',
-      description: 'Siap mempercepat proyek pengembangan web Anda dengan alur kerja berbantuan AI? Mari diskusikan kebutuhan Anda dan jelajahi bagaimana saya dapat membantu bisnis Anda berkembang.',
+      title: 'Mari Membangun Sesuatu yang Luar Biasa Bersama',
+      description: 'Siap mempercepat proyek pengembangan web Anda dengan alur kerja berbantuan AI? Mari diskusikan kebutuhan Anda dan berdiskusi tentang bagaimana saya dapat membantu website bisnis Anda berkembang.',
       methods: {
         whatsapp: {
           title: 'Konsultasi WhatsApp',
@@ -407,7 +427,7 @@ export const translations = {
           name: 'Nama lengkap Anda',
           email: 'email.anda@perusahaan.com',
           company: 'Nama perusahaan Anda',
-          budget: 'misal, $5,000 - $10,000',
+          budget: 'misal, Rp. 1.5 Jt - Rp. 8 Jt',
           timeline: 'misal, 2-3 bulan, SEGERA, Fleksibel',
           message: 'Jelaskan persyaratan proyek, tujuan, dan fitur spesifik yang Anda butuhkan...'
         },

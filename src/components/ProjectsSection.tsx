@@ -45,17 +45,17 @@ const projectData: ProjectBase[] = [
     key: 'quicktix',
     image: '/placeholder-project-1.jpg',
     liveUrl: '#',
-    githubUrl: '#',
+    githubUrl: 'https://github.com/Ezlryb506/QuickTix_Website-Penjualan-Tiket-Event',
     category: 'E-Commerce',
-    technologies: ['Next.js', 'TypeScript', 'Supabase', 'Tailwind CSS', 'Stripe API'],
+    technologies: ['HTML', 'CSS', 'JavaScript', 'Bootstrap', 'PHP', 'MySQL', 'Code Igniter 3', 'Ajax', 'JQuery'],
   },
   {
     key: 'abadiJaya',
     image: '/placeholder-project-2.jpg',
-    liveUrl: '#',
-    githubUrl: '#',
+    liveUrl: 'https://abadi-jaya.vercel.app/',
+    githubUrl: 'https://github.com/Ezlryb506/abadi_jaya',
     category: 'Business Website',
-    technologies: ['Next.js', 'Tailwind CSS', 'Vercel', 'Contact Forms', 'SEO Optimization'],
+    technologies: ['FS Next.js', 'TypeScript', 'Tailwind CSS', 'Vercel', 'Supabase','PostgreSQL', 'SEO Optimization'],
   },
 ];
 
