@@ -5,13 +5,11 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Home, ArrowLeft, MessageCircle } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { translations } from "@/data/translations";
 import { Button } from "@/components/ui/button";
 
 export default function NotFoundPage() {
   const router = useRouter();
   const { language } = useLanguage();
-  const t = translations[language] || translations.en;
 
   const TEXT = {
     title: language === "id" ? "Halaman Tidak Ditemukan" : "Page Not Found",
@@ -27,7 +25,7 @@ export default function NotFoundPage() {
   const handleBack = () => {
     try {
       router.back();
-    } catch (_) {
+    } catch {
       router.push("/");
     }
   };

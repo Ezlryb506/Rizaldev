@@ -174,6 +174,14 @@ export const translations = {
           growth: {
             title: 'Business Growth',
             description: 'Solutions designed to scale with your business and drive measurable results'
+          },
+          security: {
+            title: 'Security & Compliance',
+            description: 'Modern security practices, audits, and compliance with industry standards'
+          },
+          cost: {
+            title: 'Cost Efficiency',
+            description: 'Automation and AI reduce repetitive work to lower overall project costs'
           }
         }
       }
@@ -430,6 +438,14 @@ export const translations = {
           growth: {
             title: 'Pertumbuhan Bisnis',
             description: 'Solusi dirancang untuk berkembang dengan bisnis Anda dan mendorong hasil yang terukur'
+          },
+          security: {
+            title: 'Keamanan & Kepatuhan',
+            description: 'Praktik keamanan modern, audit, dan kepatuhan terhadap standar industri'
+          },
+          cost: {
+            title: 'Efisiensi Biaya',
+            description: 'Otomasi dan AI memangkas pekerjaan repetitif sehingga biaya proyek lebih hemat'
           }
         }
       }

@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Globe, Zap, Puzzle, Brain, Clock, Shield, Lightbulb, Rocket, Gauge, LayoutGrid } from 'lucide-react';
+import { Globe, Zap, Puzzle, Brain, Clock, Shield, Lightbulb, Rocket, Gauge, LayoutGrid, ShieldCheck, BadgeDollarSign } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { translations } from '@/data/translations';
@@ -24,6 +24,8 @@ const advantageIcons: Record<AdvantageKey, React.ReactNode> = {
   quality: <Shield className="h-6 w-6" />,
   innovation: <Lightbulb className="h-6 w-6" />,
   growth: <Rocket className="h-6 w-6" />,
+  security: <ShieldCheck className="h-6 w-6" />,
+  cost: <BadgeDollarSign className="h-6 w-6" />,
 };
 
 const ServicesSection = () => {
