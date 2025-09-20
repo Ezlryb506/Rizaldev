@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { ExternalLink, Github, ArrowRight } from 'lucide-react';
+import { ExternalLink, Github, ArrowRight, Images } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -21,6 +21,7 @@ type ProjectBase = {
   githubUrl: string
   category: string
   technologies: string[]
+  photosUrl?: string
 }
 
 type ProjectLocalized = {
@@ -36,7 +37,7 @@ type ProjectsTranslations = {
   status: { live: string; completed: string }
   features: string
   controls: { showMore: string; showLess: string }
-  actions: { viewLive: string; code: string }
+  actions: { viewLive: string; code: string; viewPhotos: string }
   cta: { title: string; description: string; button: string }
   list?: Partial<Record<ProjectKey, ProjectLocalized>>
 }
@@ -54,6 +55,7 @@ const projectData: ProjectBase[] = [
     githubUrl: 'https://github.com/Ezlryb506/QuickTix_Website-Penjualan-Tiket-Event',
     category: 'E-Commerce',
     technologies: ['HTML', 'CSS', 'JavaScript', 'Bootstrap', 'PHP', 'MySQL', 'Code Igniter 3', 'Ajax', 'JQuery'],
+    photosUrl: 'https://drive.google.com/drive/folders/1IqnxKZGqdWI-9srEZzk2KcCYjjQJuGaB?usp=sharing',
   },
   {
     key: 'abadiJaya',
@@ -62,6 +64,7 @@ const projectData: ProjectBase[] = [
     githubUrl: 'https://github.com/Ezlryb506/abadi_jaya',
     category: 'Business Website',
     technologies: ['FS Next.js', 'TypeScript', 'Tailwind CSS', 'Vercel', 'Supabase','PostgreSQL', 'SEO Optimization'],
+    photosUrl: 'https://drive.google.com/drive/folders/1CDYdGV0R5JF8vtm4JINs9v7taNE7z7eo?usp=sharing',
   },
 ];
 
@@ -106,6 +109,7 @@ const ProjectsSection = () => {
             const placeholdersCount = Math.max(0, paddedTarget - visibleFeatures.length);
             const featuresListId = `features-${project.key}`;
             const isLive = isValidHttpUrl(project.liveUrl);
+            const hasPhotos = isValidHttpUrl(project.photosUrl);
             // Split title into two lines: before and after dash/en dash
             const rawTitle = project.title ?? project.key;
             const splitByEnDash = rawTitle.split('–');
@@ -233,6 +237,30 @@ const ProjectsSection = () => {
                         {pt.actions.viewLive}
                       </Button>
                     )}
+                    {hasPhotos ? (
+                      <Button asChild variant="outline" className="project-btn secondary">
+                        <a
+                          href={project.photosUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`View Photos: ${project.title ?? project.key}`}
+                        >
+                          <Images className="h-4 w-4" />
+                          {pt.actions.viewPhotos}
+                        </a>
+                      </Button>
+                    ) : (
+                      <Button
+                        variant="outline"
+                        className="project-btn secondary opacity-70 cursor-not-allowed"
+                        disabled
+                        aria-disabled
+                        title="Foto belum tersedia"
+                      >
+                        <Images className="h-4 w-4" />
+                        {pt.actions.viewPhotos}
+                      </Button>
+                    )}
                     <Button asChild variant="outline" className="project-btn secondary">
                       <a
                         href={project.githubUrl}
@@ -275,7 +303,15 @@ const ProjectsSection = () => {
               description: project.description ?? '',
               url: isValidHttpUrl(project.liveUrl) ? project.liveUrl : project.githubUrl,
               image: project.image || undefined,
-              sameAs: project.githubUrl ? [project.githubUrl] : undefined,
+              sameAs: [
+                ...(project.githubUrl ? [project.githubUrl] : []),
+                ...(isValidHttpUrl(project.photosUrl) ? [project.photosUrl as string] : []),
+              ].length
+                ? [
+                    ...(project.githubUrl ? [project.githubUrl] : []),
+                    ...(isValidHttpUrl(project.photosUrl) ? [project.photosUrl as string] : []),
+                  ]
+                : undefined,
               keywords: Array.isArray(project.technologies)
                 ? project.technologies.join(", ")
                 : undefined,

@@ -334,6 +334,8 @@ img, video, svg, canvas, iframe {
 .features-list { list-style: none; }
 .feature-item { display: flex; align-items: center; gap: var(--space-sm); font-size: 14px; color: var(--text-secondary); margin-bottom: var(--space-xs); }
 .feature-item svg { color: var(--accent-primary); flex-shrink: 0; }
+/* Ensure truncated text uses good contrast */
+.features-list .truncate { color: var(--text-primary); }
 .project-tech { margin-bottom: var(--space-lg); }
 .tech-stack { display: flex; flex-wrap: wrap; gap: var(--space-sm); }
 .tech-badge { background: var(--bg-primary); color: var(--text-secondary); padding: var(--space-xs) var(--space-sm); border-radius: var(--radius-sm); font-size: 12px; font-weight: 500; border: 1px solid var(--border-primary); }
@@ -689,7 +691,7 @@ img, video, svg, canvas, iframe {
 .method-title { font-size: 20px; font-weight: 600; color: var(--text-primary); margin-bottom: var(--space-xs); }
 .method-description { font-size: 14px; color: var(--text-secondary); }
 .method-action { font-weight: 600; border-radius: var(--radius-md); }
-.method-action.primary { background: var(--accent-primary); color: var(--bg-primary); border: none; }
+.method-action.primary { background: var(--accent-primary); color: #111; border: none; }
 .method-action.secondary { background: transparent; color: var(--text-primary); border: 2px solid var(--border-primary); }
 .method-action.secondary:hover { border-color: var(--accent-primary); color: var(--accent-primary); background: var(--accent-bg); }
 
@@ -701,6 +703,13 @@ img, video, svg, canvas, iframe {
   align-items: center;
   gap: var(--space-sm);
 }
+/* Stronger hover and focus states for accessibility */
+.method-action.primary:hover { background: var(--accent-hover); }
+.method-action:focus-visible {
+  outline: 2px solid color-mix(in oklab, var(--accent-primary), white 10%);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent-primary), black 70%);
+}
 
 /* WhatsApp button in form actions consistency */
 .whatsapp-btn {
@@ -709,6 +718,11 @@ img, video, svg, canvas, iframe {
   display: inline-flex;
   align-items: center;
   gap: var(--space-sm);
+}
+.whatsapp-btn:focus-visible {
+  outline: 2px solid color-mix(in oklab, var(--accent-primary), white 10%);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent-primary), black 70%);
 }
 
 /* ===== Contact (left grid) spacing fix for pixel parity ===== */

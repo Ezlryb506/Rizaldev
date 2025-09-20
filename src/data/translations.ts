@@ -62,7 +62,8 @@ export const translations = {
       },
       actions: {
         viewLive: 'View Live',
-        code: 'Code'
+        code: 'Code',
+        viewPhotos: 'View Photos'
       },
       cta: {
         title: 'Interested in seeing more projects?',
@@ -317,7 +318,8 @@ export const translations = {
       },
       actions: {
         viewLive: 'Lihat Live',
-        code: 'Kode'
+        code: 'Kode',
+        viewPhotos: 'Lihat Foto'
       },
       cta: {
         title: 'Tertarik melihat lebih banyak proyek?',
