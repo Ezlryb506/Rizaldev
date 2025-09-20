@@ -49,17 +49,17 @@ const HeroSection = () => {
 
             <div className="hero-stats">
               <div className="stat-item">
-                <span className="stat-number">3+</span>
+                <span className="stat-number">1+</span>
                 <span className="stat-label">{t.hero.stats.experience}</span>
               </div>
               <div className="stat-item">
-                <span className="stat-number">50+</span>
+                <span className="stat-number">5+</span>
                 <span className="stat-label">{t.hero.stats.projects}</span>
               </div>
-              <div className="stat-item">
+              {/* <div className="stat-item">
                 <span className="stat-number">95%</span>
                 <span className="stat-label">{t.hero.stats.satisfaction}</span>
-              </div>
+              </div> */}
             </div>
 
             <div className="hero-actions">

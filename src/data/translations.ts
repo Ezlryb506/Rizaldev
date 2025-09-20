@@ -38,7 +38,7 @@ export const translations = {
         database: 'Database',
         ai: 'AI & Tools',
         devops: 'DevOps',
-        specialization: 'Specialization'
+        other: 'Other'
       },
       highlight: {
         title: 'AI-Powered Development Advantage',
@@ -51,10 +51,15 @@ export const translations = {
       title: 'Featured Projects',
       description: 'Showcasing real-world applications built with modern technologies and AI-assisted workflows',
       status: {
+        exam: 'Final Exam Project',
         live: 'Live Project',
         completed: 'Completed'
       },
       features: 'Key Features:',
+      controls: {
+        showMore: 'Show more',
+        showLess: 'Show less',
+      },
       actions: {
         viewLive: 'View Live',
         code: 'Code'
@@ -67,7 +72,7 @@ export const translations = {
       list: {
         quicktix: {
           title: 'QuickTix – Modern Ticketing Platform',
-          status: 'Live',
+          status: 'exam',
           description: 'A ticketing platform with secure checkout, event management, and real-time updates.',
           features: [
             'Admin Dashboard',
@@ -78,6 +83,8 @@ export const translations = {
             'Role-based access',
             'Real-time updates',
             'QR Code & Print Ticket',
+            'Encrypted QR Code',
+            'Deployed on CPanel',
           ],
         },
         abadiJaya: {
@@ -129,7 +136,7 @@ export const translations = {
         consultation: {
           title: 'AI Strategy Consultation',
           description: 'Strategic guidance on implementing AI tools and workflows to accelerate your development process and business operations.',
-          features: ['Workflow analysis', 'AI tool recommendation', 'Implementation strategy', 'Training & support'],
+          features: ['Workflow analysis', 'AI tool recommendation', 'Implementation strategy', 'Technical Support'],
           pricing: 'Starting from $5/hour',
           timeline: 'Flexible'
         }
@@ -272,7 +279,7 @@ export const translations = {
         database: 'Database',
         ai: 'AI & Alat',
         devops: 'DevOps',
-        specialization: 'Spesialisasi'
+        other: 'Lainnya'
       },
       highlight: {
         title: 'Keunggulan Pengembangan Bertenaga AI',
@@ -285,10 +292,15 @@ export const translations = {
       title: 'Proyek Unggulan',
       description: 'Menampilkan aplikasi dunia nyata yang dibangun dengan teknologi modern dan alur kerja berbantuan AI',
       status: {
+        exam: 'Proyek Ujian Akhir',
         live: 'Proyek Live',
         completed: 'Selesai'
       },
       features: 'Fitur Utama:',
+      controls: {
+        showMore: 'Tampilkan semua',
+        showLess: 'Sembunyikan',
+      },
       actions: {
         viewLive: 'Lihat Live',
         code: 'Kode'
@@ -301,7 +313,7 @@ export const translations = {
       list: {
         quicktix: {
           title: 'QuickTix – Platform Tiketing Modern',
-          status: 'Live',
+          status: 'Completed',
           description: 'Platform tiket dengan pencarian event, manajemen event, dan pembaruan real-time.',
           features: [
             'Dashboard Admin Informatif & Interaktif',
@@ -312,6 +324,8 @@ export const translations = {
             'Akses berbasis Role',
             'Pembaruan Real-Time',
             'QR Code & Cetak Tiket',
+            'Enkripsi QR Code',
+            'Deploy di CPanel',
           ],
         },
         abadiJaya: {
@@ -328,7 +342,7 @@ export const translations = {
             'Pencarian Produk & Layanan',
             'Mobile Responsif',
             'Penyimpanan Data & Gambar di Supabase',
-            'Deploy di Vercel',
+            'Deploy di Vercel (CI/CD)',
           ],
         },
       },

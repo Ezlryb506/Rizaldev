@@ -59,7 +59,7 @@ const Footer = () => {
                   ))}
                 </ul>
               </div>
-              <div className="link-group">
+              <div className="link-group contact-group hidden sm:block">
                 <h4 className="link-title">{t.footer.links.contact}</h4>
                 <div className="contact-info">
                   <div className="contact-item">

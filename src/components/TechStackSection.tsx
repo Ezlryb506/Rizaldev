@@ -20,19 +20,19 @@ const TechStackSection = () => {
     {
       title: t.techStack.categories.backend,
       icon: <Terminal className="h-6 w-6" />,
-      technologies: ['Node.js', 'CodeIgniter 3', 'RESTful APIs', 'Express.js'],
+      technologies: ['Node.js', 'CodeIgniter 3', 'RESTful APIs'],
       color: 'category-backend'
     },
     {
       title: t.techStack.categories.database,
       icon: <Database className="h-6 w-6" />,
-      technologies: ['PostgreSQL (Supabase)', 'MySQL', 'Redis', 'Database Design'],
+      technologies: ['PostgreSQL (Supabase)', 'MySQL', 'Database Design'],
       color: 'category-database'
     },
     {
       title: t.techStack.categories.ai,
       icon: <Bot className="h-6 w-6" />,
-      technologies: ['Large Language Models', 'GitHub Copilot', 'Cursor IDE', 'VS Code', 'Prompt Engineering'],
+      technologies: ['LLM', 'GitHub Copilot', 'Cursor', 'VS Code', 'Windsurf', 'Emergent AI', 'Prompt Engineering'],
       color: 'category-ai'
     },
     {
@@ -42,10 +42,10 @@ const TechStackSection = () => {
       color: 'category-devops'
     },
     {
-      title: t.techStack.categories.specialization,
+      title: t.techStack.categories.other,
       icon: <Zap className="h-6 w-6" />,
       technologies: ['AI-Assisted Development', 'Workflow Optimization', 'Rapid Prototyping', 'Code Generation'],
-      color: 'category-special'
+      color: 'category-other'
     }
   ];
 

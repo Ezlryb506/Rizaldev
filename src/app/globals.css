@@ -305,8 +305,7 @@ img, video, svg, canvas, iframe {
 /* Projects */
 .projects-section { padding: var(--space-2xl) 0; }
 .projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  /* Let Tailwind classes control display and columns for consistency */
   gap: var(--space-xl);
   margin-bottom: var(--space-2xl);
 }
@@ -319,8 +318,8 @@ img, video, svg, canvas, iframe {
   width: 100%;
 }
 .project-card:hover { transform: translateY(-6px); box-shadow: 0 25px 50px rgba(0,0,0,0.4); border-color: var(--accent-primary); }
-.project-image { height: 200px; position: relative; overflow: hidden; background: var(--bg-tertiary); }
-.project-image-placeholder { width: 100%; height: 100%; background: linear-gradient(135deg, var(--bg-tertiary), var(--bg-secondary)); display: flex; align-items: center; justify-content: center; position: relative; }
+.project-image { position: relative; overflow: hidden; background: var(--bg-tertiary); }
+.project-image-placeholder { width: 100%; /* height controlled by aspect-ratio in component */ background: linear-gradient(135deg, var(--bg-tertiary), var(--bg-secondary)); display: flex; align-items: center; justify-content: center; position: relative; }
 .placeholder-text { color: var(--text-muted); font-size: 18px; font-weight: 500; }
 .placeholder-overlay { position: absolute; top: var(--space-md); right: var(--space-md); }
 .project-category { background: var(--accent-primary); color: var(--bg-primary); padding: var(--space-xs) var(--space-sm); border-radius: var(--radius-sm); font-size: 12px; font-weight: 600; }
@@ -474,7 +473,8 @@ img, video, svg, canvas, iframe {
 
 /* ===== Hero Section (ported for pixel parity) ===== */
 .hero-section {
-  padding: 140px 0 var(--space-2xl);
+  /* Reduce top gap from header and make it responsive */
+  padding: clamp(56px, 8vh, 120px) 0 var(--space-2xl);
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -764,6 +764,7 @@ img, video, svg, canvas, iframe {
 /* Footer contact */
 .contact-info { display: flex; flex-direction: column; gap: var(--space-sm); }
 .contact-item { display: flex; align-items: center; gap: var(--space-sm); }
+.contact-item svg { color: var(--accent-primary); flex-shrink: 0; }
 .contact-link { color: var(--text-secondary); text-decoration: none; font-size: 14px; }
 .availability { display: flex; align-items: center; gap: var(--space-xs); margin-top: var(--space-sm); }
 .status-indicator { width: 8px; height: 8px; background: var(--accent-primary); border-radius: 50%; box-shadow: 0 0 8px var(--accent-glow); }
@@ -778,8 +779,13 @@ img, video, svg, canvas, iframe {
   .footer-main { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 640px) {
-  .footer-main { grid-template-columns: 1fr; }
+  .footer-main { grid-template-columns: 1fr 1fr; gap: var(--space-lg); }
+  .footer-brand { grid-column: 1 / -1; }
   .footer-bottom-content { flex-direction: column; gap: var(--space-sm); align-items: flex-start; }
+  /* Hide availability indicator on mobile to save space */
+  .footer .availability { display: none; }
+  /* Hide whole contact group on mobile */
+  .footer .footer-links .contact-group { display: none !important; }
 }
 
 /* ===== Contact details (left column) exact match ===== */
