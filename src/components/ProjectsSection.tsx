@@ -41,11 +41,15 @@ type ProjectsTranslations = {
   list?: Partial<Record<ProjectKey, ProjectLocalized>>
 }
 
+// Helper: validate http(s) URL for live deployment
+const isValidHttpUrl = (url: string | undefined) =>
+  typeof url === 'string' && /^https?:\/\//.test(url);
+
 // Mock data structure that should come from a CMS or API in the future
 const projectData: ProjectBase[] = [
   {
     key: 'quicktix',
-    image: '/placeholder-project-1.jpg',
+    image: '/images/QuickTix.png',
     liveUrl: '#',
     githubUrl: 'https://github.com/Ezlryb506/QuickTix_Website-Penjualan-Tiket-Event',
     category: 'E-Commerce',
@@ -53,7 +57,7 @@ const projectData: ProjectBase[] = [
   },
   {
     key: 'abadiJaya',
-    image: '/placeholder-project-2.jpg',
+    image: '/images/AbadiJaya.png',
     liveUrl: 'https://abadi-jaya.vercel.app/',
     githubUrl: 'https://github.com/Ezlryb506/abadi_jaya',
     category: 'Business Website',
@@ -101,6 +105,7 @@ const ProjectsSection = () => {
             const paddedTarget = maxFeaturesAcross;
             const placeholdersCount = Math.max(0, paddedTarget - visibleFeatures.length);
             const featuresListId = `features-${project.key}`;
+            const isLive = isValidHttpUrl(project.liveUrl);
             // Split title into two lines: before and after dash/en dash
             const rawTitle = project.title ?? project.key;
             const splitByEnDash = rawTitle.split('–');
@@ -205,17 +210,29 @@ const ProjectsSection = () => {
 
                   {/* Bottom row: actions, always at the very bottom */}
                   <div className="project-actions row-start-3 row-end-4 flex items-center gap-3 flex-wrap">
-                    <Button asChild className="project-btn primary">
-                      <a
-                        href={project.liveUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={`View Live: ${project.title ?? project.key}`}
+                    {isLive ? (
+                      <Button asChild className="project-btn primary">
+                        <a
+                          href={project.liveUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`View Live: ${project.title ?? project.key}`}
+                        >
+                          <ExternalLink className="h-4 w-4" />
+                          {pt.actions.viewLive}
+                        </a>
+                      </Button>
+                    ) : (
+                      <Button
+                        className="project-btn primary opacity-70 cursor-not-allowed"
+                        disabled
+                        aria-disabled
+                        title="Project belum dideploy"
                       >
                         <ExternalLink className="h-4 w-4" />
                         {pt.actions.viewLive}
-                      </a>
-                    </Button>
+                      </Button>
+                    )}
                     <Button asChild variant="outline" className="project-btn secondary">
                       <a
                         href={project.githubUrl}
@@ -256,7 +273,7 @@ const ProjectsSection = () => {
               "@type": project.githubUrl ? "SoftwareSourceCode" : "CreativeWork",
               name: project.title ?? project.key,
               description: project.description ?? '',
-              url: project.liveUrl || project.githubUrl,
+              url: isValidHttpUrl(project.liveUrl) ? project.liveUrl : project.githubUrl,
               image: project.image || undefined,
               sameAs: project.githubUrl ? [project.githubUrl] : undefined,
               keywords: Array.isArray(project.technologies)

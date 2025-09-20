@@ -124,7 +124,7 @@ export const translations = {
           description: 'Lightning-fast, conversion-optimized landing pages and frontends that engage users and drive business results.',
           features: ['Performance optimized', 'SEO friendly', 'Conversion focused', 'A/B test ready'],
           pricing: 'Starting from $10',
-          timeline: '1-3 weeks'
+          timeline: '0-3 weeks'
         },
         integration: {
           title: 'API & System Integration',
@@ -139,6 +139,20 @@ export const translations = {
           features: ['Workflow analysis', 'AI tool recommendation', 'Implementation strategy', 'Technical Support'],
           pricing: 'Starting from $5/hour',
           timeline: 'Flexible'
+        },
+        optimization: {
+          title: 'Performance & SEO Optimization',
+          description: 'Improve Core Web Vitals, search rankings, and conversion through image optimization, code-splitting, caching, and structured data.',
+          features: ['Core Web Vitals audit', 'Image & asset optimization', 'Code-splitting & prefetch', 'Structured data & metadata'],
+          pricing: 'Starting from $50',
+          timeline: '0-2 weeks'
+        },
+        designSystem: {
+          title: 'Design System & UI Kit',
+          description: 'Build a scalable and consistent component system with Tailwind CSS and shadcn/ui to speed up development and ensure UI consistency.',
+          features: ['Component library', 'Theming & tokens', 'Docs & usage guidelines', 'Accessibility best practices'],
+          pricing: 'Starting from $80',
+          timeline: '0-3 weeks'
         }
       },
       advantages: {
@@ -365,7 +379,7 @@ export const translations = {
           description: 'Landing page dan frontend yang sangat cepat dan dioptimalkan untuk konversi yang menarik pengguna dan mendorong hasil bisnis.',
           features: ['Dioptimalkan performa', 'SEO friendly', 'Fokus konversi', 'Siap A/B test'],
           pricing: 'Mulai dari Rp. 300k',
-          timeline: '1-3 minggu'
+          timeline: '0-3 minggu'
         },
         integration: {
           title: 'Integrasi API & Sistem',
@@ -380,6 +394,20 @@ export const translations = {
           features: ['Analisis alur kerja', 'Rekomendasi alat AI', 'Strategi implementasi', 'Pelatihan & dukungan'],
           pricing: 'Mulai dari Rp. 75k /jam',
           timeline: 'Fleksibel'
+        },
+        optimization: {
+          title: 'Optimasi Performa & SEO',
+          description: 'Meningkatkan Core Web Vitals, peringkat pencarian, dan konversi melalui optimasi gambar, code-splitting, caching, dan structured data.',
+          features: ['Audit Core Web Vitals', 'Optimasi gambar & aset', 'Code-splitting & prefetch', 'Structured data & metadata'],
+          pricing: 'Mulai dari Rp. 500k',
+          timeline: '0-2 minggu'
+        },
+        designSystem: {
+          title: 'Design System & UI Kit',
+          description: 'Membangun sistem komponen yang skalabel dan konsisten dengan Tailwind CSS dan shadcn/ui untuk percepat pengembangan dan konsistensi UI.',
+          features: ['Library komponen', 'Theming & tokens', 'Dokumentasi & panduan penggunaan', 'Praktik aksesibilitas'],
+          pricing: 'Mulai dari Rp. 1 Jt',
+          timeline: '0-3 minggu'
         }
       },
       advantages: {

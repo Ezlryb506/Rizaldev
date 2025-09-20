@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Globe, Zap, Puzzle, Brain, Clock, Shield, Lightbulb, Rocket } from 'lucide-react';
+import { Globe, Zap, Puzzle, Brain, Clock, Shield, Lightbulb, Rocket, Gauge, LayoutGrid } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { translations } from '@/data/translations';
@@ -15,6 +15,8 @@ const serviceIcons: Record<ServiceKey, React.ReactNode> = {
   frontend: <Zap className="h-8 w-8" />,
   integration: <Puzzle className="h-8 w-8" />,
   consultation: <Brain className="h-8 w-8" />,
+  optimization: <Gauge className="h-8 w-8" />,
+  designSystem: <LayoutGrid className="h-8 w-8" />,
 };
 
 const advantageIcons: Record<AdvantageKey, React.ReactNode> = {
@@ -51,7 +53,7 @@ const ServicesSection = () => {
           <p className="section-description">{t.services.description}</p>
         </div>
 
-        <div className="services-grid">
+        <div className="services-grid grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
           {services.map((service) => (
             <Card key={service.key} className="service-card">
               <CardContent className="service-content">
