@@ -25,6 +25,7 @@
 *.pem
 /src/doc
 /src/debug-utility
+.vscode
 
 # debug
 npm-debug.log*

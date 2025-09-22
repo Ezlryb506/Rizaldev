@@ -625,13 +625,37 @@ img, video, svg, canvas, iframe {
 
 .expertise-highlight { background: var(--bg-primary); border: 1px solid var(--accent-primary); border-radius: var(--radius-lg); padding: var(--space-xl); position: relative; overflow: hidden; }
 .expertise-highlight::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--accent-primary), var(--accent-hover)); }
-.highlight-content { display: flex; align-items: center; gap: var(--space-md); }
+.highlight-content { display: flex; align-items: center; gap: var(--space-md); flex-wrap: wrap; }
 .highlight-icon { width: 60px; height: 60px; background: var(--accent-primary); color: var(--bg-primary); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-.highlight-text h3 { font-size: 24px; font-weight: 600; color: var(--accent-primary); margin-bottom: var(--space-sm); }
-.highlight-text p { font-size: 16px; color: var(--text-secondary); line-height: 1.6; }
+.highlight-title { font-size: 24px; font-weight: 700; color: var(--accent-primary); line-height: 1.2; flex: 1 1 0; min-width: 0; }
+.highlight-description { font-size: 16px; color: var(--text-secondary); line-height: 1.6; flex-basis: 100%; border: 1px dashed var(--accent-primary); border-radius: var(--radius-md); padding: var(--space-md); background: color-mix(in oklab, var(--accent-bg), transparent 30%); }
 
 @media (max-width: 768px) {
   .tech-grid { grid-template-columns: 1fr; }
+}
+
+/* Mobile-first layout for highlight section: icon | title on first row, description full-width second row */
+@media (max-width: 768px) {
+  /* Use grid so the title always stays to the right of the icon */
+  .highlight-content { 
+    display: grid;
+    grid-template-columns: auto 1fr; 
+    column-gap: var(--space-sm); 
+    row-gap: var(--space-xs);
+    align-items: start;
+  }
+  .highlight-title { font-size: 20px; align-self: center; }
+  /* Make description take the full width on the next row */
+  .highlight-description { margin-top: 0; grid-column: 1 / -1; padding: var(--space-sm) var(--space-md); }
+  /* Reduce outer container padding so outline feels closer to edge */
+  .expertise-highlight { padding: var(--space-md); }
+}
+
+@media (max-width: 480px) {
+  .highlight-title { font-size: 18px; }
+  .highlight-icon { width: 52px; height: 52px; border-radius: var(--radius-sm); }
+  .highlight-description { font-size: 14px; padding: var(--space-xs) var(--space-sm); }
+  .expertise-highlight { padding: var(--space-sm); }
 }
 
 /* ===== Services Offered Section (ported) ===== */
@@ -642,6 +666,79 @@ img, video, svg, canvas, iframe {
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: var(--space-md);
   margin-bottom: var(--space-2xl);
+}
+
+/* ===== Workflow (toggle from Tech Stack) ===== */
+.workflow-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-md);
+  margin-bottom: var(--space-2xl);
+}
+.workflow-card {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  transition: all 0.3s ease;
+  position: relative;
+}
+.workflow-card:hover { transform: translateY(-4px); border-color: var(--accent-primary); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+.workflow-card-content { padding: var(--space-xl); }
+.workflow-card-header { display: flex; align-items: center; gap: var(--space-md); margin-bottom: var(--space-sm); }
+.workflow-icon { width: 50px; height: 50px; background: var(--accent-bg); color: var(--accent-primary); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; }
+.workflow-title { font-size: 20px; font-weight: 600; color: var(--text-primary); }
+.workflow-description { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+
+/* Mobile timeline look: single column with connectors */
+@media (max-width: 768px) {
+  .workflow-grid { grid-template-columns: 1fr; position: relative; }
+  .workflow-card-content { padding: var(--space-lg); }
+  /* Scope the vertical connector to an optional .timeline modifier so it doesn't show by default */
+  .workflow-grid.timeline .workflow-card:not(:last-child)::before {
+    content: '';
+    position: absolute; left: 28px; top: 0; bottom: -8px;
+    width: 2px; background: var(--border-subtle);
+  }
+  .workflow-grid.timeline .workflow-card:first-child::before { top: 32px; }
+  .workflow-icon { width: 44px; height: 44px; }
+}
+
+/* Toggle button sizing (used for Tech Stack / Workflow switch) */
+.toggle-btn { 
+  padding: 10px 18px; 
+  min-width: auto; width: auto; 
+  line-height: 1; 
+  flex: 0 0 auto; /* override .project-btn flex:1 */
+}
+@media (max-width: 480px) {
+  .toggle-btn { padding: 10px 16px; }
+}
+
+/* Auto spotlight animation across workflow cards */
+@keyframes wfSpotlight {
+  0% { box-shadow: none; transform: translateY(0); border-color: var(--border-subtle); }
+  8% { box-shadow: 0 12px 24px rgba(0,0,0,0.35); transform: translateY(-4px); border-color: var(--accent-primary); }
+  16% { box-shadow: none; transform: translateY(0); border-color: var(--border-subtle); }
+  100% { box-shadow: none; transform: translateY(0); border-color: var(--border-subtle); }
+}
+/* totalCycle ≈ 7.2s (6 kartu x 1.2s) */
+.workflow-grid.auto-spotlight .workflow-card { 
+  animation: wfSpotlight 12s ease-in-out infinite both; 
+}
+.workflow-grid.auto-spotlight .workflow-card:nth-child(1) { animation-delay: 0s; }
+.workflow-grid.auto-spotlight .workflow-card:nth-child(2) { animation-delay: 1.2s; }
+.workflow-grid.auto-spotlight .workflow-card:nth-child(3) { animation-delay: 2.4s; }
+.workflow-grid.auto-spotlight .workflow-card:nth-child(4) { animation-delay: 3.6s; }
+.workflow-grid.auto-spotlight .workflow-card:nth-child(5) { animation-delay: 4.8s; }
+.workflow-grid.auto-spotlight .workflow-card:nth-child(6) { animation-delay: 6.0s; }
+
+/* Fade/slide animations for view toggle */
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-slide-in {
+  animation: fadeSlideIn 100ms cubic-bezier(.22,.61,.36,1) both;
 }
 
 .service-card {

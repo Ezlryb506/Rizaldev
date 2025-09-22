@@ -9,6 +9,20 @@ export const translations = {
       contact: 'Contact'
     },
     
+    // Workflow Section (AI-powered development flow)
+    workflow: {
+      title: 'AI-Powered Development Workflow',
+      description: 'A clear and efficient 6-step process from planning to launch, leveraging AI for speed and quality.',
+      list: [
+        { key: 'strategy', icon: 'Target', title: 'Strategy & Planning', description: 'Define goals, KPIs, scope, gather requirements, research market & business flows. AI as Junior Analyst for summaries, risk hints, and user story drafts.' },
+        { key: 'design', icon: 'Layout', title: 'Design & Prototyping', description: 'Create IA, wireframes, and high-fidelity UI/UX. AI as Design Assistant for variations, mood boards, and UX best practices.' },
+        { key: 'development', icon: 'Code2', title: 'Core Development', description: 'Project setup, scaffolding, core components, API integrations, and data wiring. AI as Pair Programmer for boilerplate and schema suggestions.' },
+        { key: 'iteration', icon: 'Wrench', title: 'Iteration & Refinement', description: 'Bug fixes, responsiveness, accessibility, and refactoring. AI as Code Reviewer and Problem Solver.' },
+        { key: 'testing', icon: 'SearchCheck', title: 'Testing & Optimization', description: 'QA, UAT, CWV performance, SEO (meta, structured data). AI as Quality & Performance Engineer.' },
+        { key: 'launch', icon: 'BookOpen', title: 'Launch & Handover', description: 'Production deploy, monitoring, docs, operational guide, and training. AI as Technical Writer.' }
+      ]
+    },
+    
     // Hero Section
     hero: {
       greeting: "Hello, I'm",
@@ -30,8 +44,12 @@ export const translations = {
     
     // Tech Stack Section
     techStack: {
-      title: 'Tech Stack & Expertise',
+      title: 'Tech Stack & Experience',
       description: 'Leveraging modern technologies and AI-powered tools to build exceptional web applications',
+      actions: {
+        viewWorkflow: 'View Workflow',
+        viewTechStack: 'View Tech Stack'
+      },
       categories: {
         frontend: 'Frontend',
         backend: 'Backend',
@@ -73,7 +91,7 @@ export const translations = {
       list: {
         quicktix: {
           title: 'QuickTix – Modern Ticketing Platform',
-          status: 'exam',
+          status: 'completed',
           description: 'A ticketing platform with secure checkout, event management, and real-time updates.',
           features: [
             'Admin Dashboard',
@@ -273,6 +291,20 @@ export const translations = {
       contact: 'Kontak'
     },
     
+    // Workflow Section (Alur pengembangan bertenaga AI)
+    workflow: {
+      title: 'Alur Pengembangan Bertenaga AI',
+      description: 'Proses 6 langkah yang jelas dari perencanaan hingga peluncuran, memanfaatkan AI untuk kecepatan dan kualitas.',
+      list: [
+        { key: 'strategy', icon: 'Target', title: 'Strategi & Perencanaan', description: 'Tetapkan tujuan, KPI, ruang lingkup; kumpulkan requirement; riset pasar, kompetitor, dan alur bisnis. AI sebagai Analis Junior untuk ringkasan, analisis risiko, dan draf user stories.' },
+        { key: 'design', icon: 'Layout', title: 'Desain & Prototyping', description: 'Menyusun IA, wireframe, dan desain UI/UX high‑fidelity. AI sebagai Asisten Desainer untuk variasi, mood board, dan saran UX.' },
+        { key: 'development', icon: 'Code2', title: 'Pengembangan Inti', description: 'Setup proyek, scaffolding, komponen inti, integrasi API, dan koneksi data. AI sebagai Pair Programmer untuk boilerplate dan skema data.' },
+        { key: 'iteration', icon: 'Wrench', title: 'Iterasi & Penyempurnaan', description: 'Perbaikan bug, responsivitas, aksesibilitas, dan refactoring. AI sebagai Code Reviewer dan Problem Solver.' },
+        { key: 'testing', icon: 'SearchCheck', title: 'Pengujian & Optimasi', description: 'QA fungsional, UAT, optimasi CWV, serta SEO (meta dan structured data). AI sebagai Quality & Performance Engineer.' },
+        { key: 'launch', icon: 'BookOpen', title: 'Peluncuran & Handover', description: 'Deploy produksi, monitoring, dokumentasi, panduan operasional, dan pelatihan. AI sebagai Penulis Teknis.' }
+      ]
+    },
+    
     // Hero Section
     hero: {
       greeting: 'Halo, Saya',
@@ -294,8 +326,12 @@ export const translations = {
     
     // Tech Stack Section
     techStack: {
-      title: 'Tech Stack & Keahlian',
+      title: 'Tech Stack & Pengalaman',
       description: 'Memanfaatkan teknologi modern dan alat bertenaga AI untuk membangun aplikasi web yang lebih baik',
+      actions: {
+        viewWorkflow: 'Lihat Workflow',
+        viewTechStack: 'Lihat Tech Stack'
+      },
       categories: {
         frontend: 'Frontend',
         backend: 'Backend',
@@ -306,7 +342,7 @@ export const translations = {
       },
       highlight: {
         title: 'Keunggulan Pengembangan Bertenaga AI',
-        description: 'Dengan mengintegrasikan alat AI seperti LLMs, Cursor IDE, Code Agent, dan rekayasa prompt tingkat lanjut, saya dapat menyelesaikan proyek 40% lebih cepat sambil mempertahankan kualitas kode yang profesional dan praktik terbaik.'
+        description: 'Dengan mengintegrasikan alat AI seperti LLMs, Cursor IDE, Code Agent, dan rekayasa prompt tingkat lanjut, saya dapat menyelesaikan proyek 40% lebih cepat sambil mempertahankan kualitas kode yang profesional dan praktik terbaik. Selain itu dengan pengembangan bertenaga AI, sangat memungkinkan saya untuk bekerja lintas bahasa dan library secara efisien.'
       }
     },
     

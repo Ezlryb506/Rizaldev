@@ -52,15 +52,34 @@ const ContactSection = () => {
   const { isSubmitting } = form.formState;
 
   const onSubmit = async (values: FormValues) => {
-    // Simulate API call
-    console.log("[Contact] Submitting form payload:", { ...values, language });
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    try {
+      console.info('[contact] submit payload', { ...values, language });
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(values),
+      });
 
-    toast.success(t.contact.form.success.title, {
-      description: t.contact.form.success.description,
-    });
+      const data = await res.json().catch(() => ({}));
 
-    form.reset();
+      if (!res.ok || !data?.ok) {
+        console.error('[contact] send failed', { status: res.status, data });
+        toast.error(language === 'id' ? 'Gagal mengirim pesan' : 'Failed to send message', {
+          description: language === 'id' ? 'Silakan coba lagi beberapa saat.' : 'Please try again shortly.',
+        });
+        return;
+      }
+
+      toast.success(t.contact.form.success.title, {
+        description: t.contact.form.success.description,
+      });
+      form.reset();
+    } catch (err) {
+      console.error('[contact] unexpected error', err);
+      toast.error(language === 'id' ? 'Terjadi kesalahan tak terduga' : 'Unexpected error occurred', {
+        description: language === 'id' ? 'Silakan coba lagi beberapa saat.' : 'Please try again shortly.',
+      });
+    }
   };
 
   const handleWhatsAppContact = () => {
@@ -154,15 +173,7 @@ const ContactSection = () => {
               <CardContent className="form-content">
                 <div className="form-header">
                   <h3 className="form-title">{t.contact.form.title}</h3>
-                  <p className="form-description">
-                    {t.contact.form.description}
-                    <br />
-                    <em style={{ color: 'var(--text-muted)', fontSize: '14px' }}>
-                      {language === 'id'
-                        ? 'Catatan: Pesan disimpan ke database. Email otomatis belum diimplementasikan - gunakan WhatsApp untuk respon cepat.'
-                        : 'Note: Messages are saved to database. Automatic email sending not implemented yet - use WhatsApp for quick response.'}
-                    </em>
-                  </p>
+                  <p className="form-description">{t.contact.form.description}</p>
                 </div>
                 <Form {...form}>
                   <form onSubmit={form.handleSubmit(onSubmit)} className="contact-form">

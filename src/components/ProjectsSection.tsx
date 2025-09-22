@@ -55,7 +55,7 @@ const projectData: ProjectBase[] = [
     githubUrl: 'https://github.com/Ezlryb506/QuickTix_Website-Penjualan-Tiket-Event',
     category: 'E-Commerce',
     technologies: ['HTML', 'CSS', 'JavaScript', 'Bootstrap', 'PHP', 'MySQL', 'Code Igniter 3', 'Ajax', 'JQuery'],
-    photosUrl: 'https://drive.google.com/drive/folders/1IqnxKZGqdWI-9srEZzk2KcCYjjQJuGaB?usp=sharing',
+    photosUrl: 'https://drive.google.com/drive/folders/1CDYdGV0R5JF8vtm4JINs9v7taNE7z7eo?usp=sharing',
   },
   {
     key: 'abadiJaya',
@@ -64,7 +64,7 @@ const projectData: ProjectBase[] = [
     githubUrl: 'https://github.com/Ezlryb506/abadi_jaya',
     category: 'Business Website',
     technologies: ['FS Next.js', 'TypeScript', 'Tailwind CSS', 'Vercel', 'Supabase','PostgreSQL', 'SEO Optimization'],
-    photosUrl: 'https://drive.google.com/drive/folders/1CDYdGV0R5JF8vtm4JINs9v7taNE7z7eo?usp=sharing',
+    photosUrl: 'https://drive.google.com/drive/folders/1IqnxKZGqdWI-9srEZzk2KcCYjjQJuGaB?usp=sharing',
   },
 ];
 
