@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { ExternalLink, Github, ArrowRight, Images } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -40,33 +41,16 @@ type ProjectsTranslations = {
   actions: { viewLive: string; code: string; viewPhotos: string }
   cta: { title: string; description: string; button: string }
   list?: Partial<Record<ProjectKey, ProjectLocalized>>
+  all?: ProjectBase[]
+  tooltips?: { notDeployed: string; photosUnavailable: string }
 }
 
 // Helper: validate http(s) URL for live deployment
 const isValidHttpUrl = (url: string | undefined) =>
   typeof url === 'string' && /^https?:\/\//.test(url);
 
-// Mock data structure that should come from a CMS or API in the future
-const projectData: ProjectBase[] = [
-  {
-    key: 'quicktix',
-    image: '/images/QuickTix.png',
-    liveUrl: '#',
-    githubUrl: 'https://github.com/Ezlryb506/QuickTix_Website-Penjualan-Tiket-Event',
-    category: 'E-Commerce',
-    technologies: ['HTML', 'CSS', 'JavaScript', 'Bootstrap', 'PHP', 'MySQL', 'Code Igniter 3', 'Ajax', 'JQuery'],
-    photosUrl: 'https://drive.google.com/drive/folders/1CDYdGV0R5JF8vtm4JINs9v7taNE7z7eo?usp=sharing',
-  },
-  {
-    key: 'abadiJaya',
-    image: '/images/AbadiJaya.png',
-    liveUrl: 'https://abadi-jaya.vercel.app/',
-    githubUrl: 'https://github.com/Ezlryb506/abadi_jaya',
-    category: 'Business Website',
-    technologies: ['FS Next.js', 'TypeScript', 'Tailwind CSS', 'Vercel', 'Supabase','PostgreSQL', 'SEO Optimization'],
-    photosUrl: 'https://drive.google.com/drive/folders/1IqnxKZGqdWI-9srEZzk2KcCYjjQJuGaB?usp=sharing',
-  },
-];
+// Project data is sourced from translations to comply with i18n and single source of truth
+// We will read t.projects.all and merge localized fields from t.projects.list
 
 const ProjectsSection = () => {
   const { language } = useLanguage();
@@ -75,9 +59,11 @@ const ProjectsSection = () => {
   const pt: ProjectsTranslations = t.projects;
   // No expand/collapse state; always render all features
 
-  // Merge static data with translations safely
-  const projects: Array<ProjectBase & ProjectLocalized> = projectData.map((p) => {
-    const localized: ProjectLocalized = pt.list?.[p.key] ?? {};
+  // Merge base data from translations with localized fields safely
+  const baseData: ProjectBase[] = Array.isArray(pt.all) ? (pt.all as ProjectBase[]) : [];
+  const projects: Array<ProjectBase & ProjectLocalized> = baseData.map((p) => {
+    const localizedMap = (pt.list as Record<string, ProjectLocalized> | undefined) || undefined;
+    const localized: ProjectLocalized = localizedMap?.[p.key as string] ?? {};
     return { ...p, ...localized };
   });
   // Determine the maximum features count across projects to normalize list height
@@ -231,7 +217,7 @@ const ProjectsSection = () => {
                         className="project-btn primary opacity-70 cursor-not-allowed"
                         disabled
                         aria-disabled
-                        title="Project belum dideploy"
+                        title={pt.tooltips?.notDeployed}
                       >
                         <ExternalLink className="h-4 w-4" />
                         {pt.actions.viewLive}
@@ -255,7 +241,7 @@ const ProjectsSection = () => {
                         className="project-btn secondary opacity-70 cursor-not-allowed"
                         disabled
                         aria-disabled
-                        title="Foto belum tersedia"
+                        title={pt.tooltips?.photosUnavailable}
                       >
                         <Images className="h-4 w-4" />
                         {pt.actions.viewPhotos}
@@ -283,9 +269,11 @@ const ProjectsSection = () => {
           <div className="cta-content">
             <h3>{pt.cta.title}</h3>
             <p>{pt.cta.description}</p>
-            <Button className="cta-button">
-              <ExternalLink className="h-4 w-4" />
-              {pt.cta.button}
+            <Button asChild className="cta-button">
+              <Link href="/projects">
+                <ExternalLink className="h-4 w-4" />
+                {pt.cta.button}
+              </Link>
             </Button>
           </div>
         </div>

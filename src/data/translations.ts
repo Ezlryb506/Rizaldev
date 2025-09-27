@@ -74,6 +74,14 @@ export const translations = {
         completed: 'Completed'
       },
       features: 'Key Features:',
+      filters: {
+        title: 'Filter Projects',
+        searchPlaceholder: 'Search projects, tech, or keywords…',
+        categoryLabel: 'Category',
+        technologyLabel: 'Technology',
+        clear: 'Clear Filters',
+        empty: 'No projects match your filters.'
+      },
       controls: {
         showMore: 'Show more',
         showLess: 'Show less',
@@ -83,10 +91,18 @@ export const translations = {
         code: 'Code',
         viewPhotos: 'View Photos'
       },
+      tooltips: {
+        notDeployed: 'Project is not deployed yet',
+        photosUnavailable: 'Photos are not available yet'
+      },
       cta: {
         title: 'Interested in seeing more projects?',
         description: 'I have additional projects and case studies available upon request',
         button: 'View All Projects'
+      },
+      back: {
+        title: 'Finished viewing projects?',
+        button: 'Back to Home Page'
       },
       list: {
         quicktix: {
@@ -124,6 +140,27 @@ export const translations = {
           ],
         },
       },
+      // All projects data for the dedicated /projects page
+      all: [
+        {
+          key: 'quicktix',
+          image: '/images/QuickTix.png',
+          liveUrl: '#',
+          githubUrl: 'https://github.com/Ezlryb506/QuickTix_Website-Penjualan-Tiket-Event',
+          category: 'E-Commerce',
+          technologies: ['HTML', 'CSS', 'JavaScript', 'Bootstrap', 'PHP', 'MySQL', 'Code Igniter 3', 'Ajax', 'JQuery'],
+          photosUrl: 'https://drive.google.com/drive/folders/1CDYdGV0R5JF8vtm4JINs9v7taNE7z7eo?usp=sharing',
+        },
+        {
+          key: 'abadiJaya',
+          image: '/images/AbadiJaya.png',
+          liveUrl: 'https://abadi-jaya.vercel.app/',
+          githubUrl: 'https://github.com/Ezlryb506/abadi_jaya',
+          category: 'Business Website',
+          technologies: ['FS Next.js', 'TypeScript', 'Tailwind CSS', 'Vercel', 'Supabase','PostgreSQL', 'SEO Optimization'],
+          photosUrl: 'https://drive.google.com/drive/folders/1IqnxKZGqdWI-9srEZzk2KcCYjjQJuGaB?usp=sharing',
+        },
+      ],
     },
     
     // Services Section
@@ -356,6 +393,14 @@ export const translations = {
         completed: 'Selesai'
       },
       features: 'Fitur Utama:',
+      filters: {
+        title: 'Filter Proyek',
+        searchPlaceholder: 'Cari proyek, teknologi, atau kata kunci…',
+        categoryLabel: 'Kategori',
+        technologyLabel: 'Teknologi',
+        clear: 'Reset Filter',
+        empty: 'Tidak ada proyek yang sesuai dengan filter.'
+      },
       controls: {
         showMore: 'Tampilkan semua',
         showLess: 'Sembunyikan',
@@ -365,10 +410,18 @@ export const translations = {
         code: 'Kode',
         viewPhotos: 'Lihat Foto'
       },
+      tooltips: {
+        notDeployed: 'Project belum dideploy',
+        photosUnavailable: 'Foto belum tersedia'
+      },
       cta: {
         title: 'Tertarik melihat lebih banyak proyek?',
         description: 'Saya memiliki proyek dan studi kasus tambahan yang tersedia atas permintaan',
         button: 'Lihat Semua Proyek'
+      },
+      back: {
+        title: 'Sudah Selesai melihat proyek?',
+        button: 'Kembali ke halaman utama'
       },
       list: {
         quicktix: {
@@ -406,6 +459,27 @@ export const translations = {
           ],
         },
       },
+      // Data semua proyek untuk halaman /projects
+      all: [
+        {
+          key: 'quicktix',
+          image: '/images/QuickTix.png',
+          liveUrl: '#',
+          githubUrl: 'https://github.com/Ezlryb506/QuickTix_Website-Penjualan-Tiket-Event',
+          category: 'E-Commerce',
+          technologies: ['HTML', 'CSS', 'JavaScript', 'Bootstrap', 'PHP', 'MySQL', 'Code Igniter 3', 'Ajax', 'JQuery'],
+          photosUrl: 'https://drive.google.com/drive/folders/1CDYdGV0R5JF8vtm4JINs9v7taNE7z7eo?usp=sharing',
+        },
+        {
+          key: 'abadiJaya',
+          image: '/images/AbadiJaya.png',
+          liveUrl: 'https://abadi-jaya.vercel.app/',
+          githubUrl: 'https://github.com/Ezlryb506/abadi_jaya',
+          category: 'Website Bisnis',
+          technologies: ['FS Next.js', 'TypeScript', 'Tailwind CSS', 'Vercel', 'Supabase','PostgreSQL', 'SEO Optimization'],
+          photosUrl: 'https://drive.google.com/drive/folders/1IqnxKZGqdWI-9srEZzk2KcCYjjQJuGaB?usp=sharing',
+        },
+      ],
     },
     
     // Services Section
