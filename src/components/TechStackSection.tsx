@@ -21,7 +21,7 @@ const TechStackSection = () => {
     {
       title: t.techStack.categories.backend,
       icon: <Terminal className="h-6 w-6" />,
-      technologies: ['Node.js', 'CodeIgniter 3', 'RESTful APIs'],
+      technologies: ['Next.js', 'CodeIgniter 3', 'RESTful APIs', 'PHP'],
       color: 'category-backend'
     },
     {
