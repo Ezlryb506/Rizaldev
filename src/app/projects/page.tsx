@@ -3,7 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ExternalLink, Github, Images, X } from "lucide-react";
+import { ExternalLink, Github, Images, ArrowRight, X } from "lucide-react";
 import { useLanguage, type SupportedLanguage } from "@/contexts/LanguageContext";
 import { translations } from "@/data/translations";
 import { Input } from "@/components/ui/input";
@@ -41,16 +41,15 @@ export default function ProjectsPage() {
   const t = translations[lang as LanguageKeys];
   const pt = t.projects;
 
-  const allBase: ProjectBase[] = Array.isArray(pt.all) ? (pt.all as ProjectBase[]) : [];
-
   // Merge localization fields from list
   const projects: Array<ProjectBase & ProjectLocalized> = React.useMemo(() => {
+    const allBase: ProjectBase[] = Array.isArray(pt.all) ? (pt.all as ProjectBase[]) : [];
     const localizedMap = (pt.list as Record<string, ProjectLocalized> | undefined) || undefined;
     return allBase.map((p) => ({
       ...p,
       ...(localizedMap?.[p.key as string] ?? {}),
     }));
-  }, [allBase, pt.list]);
+  }, [pt.all, pt.list]);
 
   // Derive facets
   const categories = React.useMemo(() => {
@@ -423,8 +422,12 @@ export default function ProjectsPage() {
                         <h4 className="features-title mb-2 m-0">{pt.features}</h4>
                         <ul className="features-list list-none pl-0 space-y-2 m-0">
                           {features.map((feature: string, idx: number) => (
-                            <li key={`feat-${idx}`} className="feature-item flex items-start gap-2 overflow-hidden" style={{ marginBottom: 0 }}>
-                              <span className="inline-block h-3 w-3 rounded-full bg-accent mr-1" />
+                            <li
+                              key={`feat-${idx}`}
+                              className="feature-item flex items-start gap-2 overflow-hidden"
+                              style={{ marginBottom: 0 }}
+                            >
+                              <ArrowRight className="h-3 w-3 text-accent mt-0.5 shrink-0" aria-hidden="true" />
                               <span className="truncate">{feature}</span>
                             </li>
                           ))}
@@ -497,7 +500,6 @@ export default function ProjectsPage() {
       {/* Structured Data */}
       <script
         type="application/ld+json"
-        // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(
             filtered.map((project) => ({
@@ -529,3 +531,4 @@ export default function ProjectsPage() {
     </main>
   );
 }
+

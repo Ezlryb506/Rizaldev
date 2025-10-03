@@ -38,7 +38,8 @@ export const translations = {
       },
       cta: {
         consultation: 'Schedule Free Consultation',
-        download: 'Download CV'
+        download: 'Download CV',
+        link: 'https://docs.google.com/document/d/1OomTs1wdttBdxpr6T-j5KmB94IoEvow6/edit?usp=drive_link&ouid=116978898334304098138&rtpof=true&sd=true'
       }
     },
     
@@ -357,7 +358,8 @@ export const translations = {
       },
       cta: {
         consultation: 'Jadwalkan Konsultasi Gratis',
-        download: 'Unduh CV'
+        download: 'Unduh CV',
+        link: 'https://docs.google.com/document/d/1OomTs1wdttBdxpr6T-j5KmB94IoEvow6/edit?usp=drive_link&ouid=116978898334304098138&rtpof=true&sd=true'
       }
     },
     

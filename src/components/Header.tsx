@@ -3,6 +3,7 @@
 import React from 'react';
 import { Moon, Sun, Palette, Languages, Menu, X } from 'lucide-react';
 import { useTheme } from 'next-themes';
+import { useRouter } from 'next/navigation';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useAccentColor } from '@/contexts/AccentColorContext';
 import { Button } from '@/components/ui/button';
@@ -12,18 +13,59 @@ const Header = () => {
   const { theme, setTheme, resolvedTheme } = useTheme();
   const { language, toggleLanguage } = useLanguage();
   const { toggleAccentColor } = useAccentColor();
+  const router = useRouter();
   const t = translations[language] || translations['en'];
 
   const [mounted, setMounted] = React.useState(false);
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [currentSection, setCurrentSection] = React.useState<string | null>(null);
   React.useEffect(() => {
     setMounted(true);
+  }, []);
+
+  // Observe sections to highlight active nav item
+  React.useEffect(() => {
+    // Track hero as the first section for "about" nav
+    const sectionIds = ['hero', 'services', 'projects', 'contact'];
+    const elements = sectionIds
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => Boolean(el));
+
+    if (elements.length === 0) return; // likely not on the homepage
+
+    const headerOffset = 70; // header height
+    const observer = new IntersectionObserver(
+      (entries) => {
+        // pick the most visible entry
+        let top: { id: string; ratio: number } | null = null;
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            const id = (entry.target as HTMLElement).id;
+            const ratio = entry.intersectionRatio;
+            if (!top || ratio > top.ratio) top = { id, ratio };
+          }
+        }
+        if (top) {
+          setCurrentSection(top.id === 'hero' ? 'about' : top.id);
+        }
+      },
+      {
+        root: null,
+        threshold: [0.25, 0.5, 0.75],
+        rootMargin: `-${headerOffset}px 0px -40% 0px`,
+      }
+    );
+
+    elements.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
   }, []);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      router.push(`/#${sectionId}`);
     }
     setMobileOpen(false);
   };
@@ -43,26 +85,26 @@ const Header = () => {
           
           <nav className="navigation desktop-only">
             <button 
-              onClick={() => scrollToSection('about')}
-              className="nav-link"
+              onClick={() => scrollToSection('hero')}
+              className={`nav-link ${currentSection === 'about' ? 'active' : ''}`}
             >
               {t.nav.about}
             </button>
             <button 
-              onClick={() => scrollToSection('projects')}
-              className="nav-link"
-            >
-              {t.nav.projects}
-            </button>
-            <button 
               onClick={() => scrollToSection('services')}
-              className="nav-link"
+              className={`nav-link ${currentSection === 'services' ? 'active' : ''}`}
             >
               {t.nav.services}
             </button>
             <button 
+              onClick={() => scrollToSection('projects')}
+              className={`nav-link ${currentSection === 'projects' ? 'active' : ''}`}
+            >
+              {t.nav.projects}
+            </button>
+            <button 
               onClick={() => scrollToSection('contact')}
-              className="nav-link"
+              className={`nav-link ${currentSection === 'contact' ? 'active' : ''}`}
             >
               {t.nav.contact}
             </button>
@@ -120,10 +162,10 @@ const Header = () => {
         </div>
         {/* Mobile dropdown menu */}
         <nav className={`mobile-menu ${mobileOpen ? 'open' : ''}`} aria-hidden={!mobileOpen}>
-          <button className="mobile-link" onClick={() => scrollToSection('about')}>{t.nav.about}</button>
-          <button className="mobile-link" onClick={() => scrollToSection('projects')}>{t.nav.projects}</button>
-          <button className="mobile-link" onClick={() => scrollToSection('services')}>{t.nav.services}</button>
-          <button className="mobile-link" onClick={() => scrollToSection('contact')}>{t.nav.contact}</button>
+          <button className={`mobile-link ${currentSection === 'about' ? 'active' : ''}`} onClick={() => scrollToSection('hero')}>{t.nav.about}</button>
+          <button className={`mobile-link ${currentSection === 'services' ? 'active' : ''}`} onClick={() => scrollToSection('services')}>{t.nav.services}</button>
+          <button className={`mobile-link ${currentSection === 'projects' ? 'active' : ''}`} onClick={() => scrollToSection('projects')}>{t.nav.projects}</button>
+          <button className={`mobile-link ${currentSection === 'contact' ? 'active' : ''}`} onClick={() => scrollToSection('contact')}>{t.nav.contact}</button>
         </nav>
       </div>
     </header>

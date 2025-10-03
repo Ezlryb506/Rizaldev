@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useMemo, useState } from 'react';
-import { Code, Database, Cloud, Bot, Zap, Terminal, Target, Search, Layout, Code2, Plug, Wrench, SearchCheck, ShieldCheck, BookOpen } from 'lucide-react';
+import { Code, Database, Bot, Zap, Terminal, Target, Search, Layout, Code2, Plug, Wrench, SearchCheck, ShieldCheck, BookOpen, Container } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { translations } from '@/data/translations';
@@ -15,13 +15,13 @@ const TechStackSection = () => {
     {
       title: t.techStack.categories.frontend,
       icon: <Code className="h-6 w-6" />,
-      technologies: ['Next.js', 'TypeScript', 'Tailwind CSS', 'HTML5', 'CSS3', 'JavaScript'],
+      technologies: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'HTML5', 'CSS3', 'JavaScript'],
       color: 'category-frontend'
     },
     {
       title: t.techStack.categories.backend,
       icon: <Terminal className="h-6 w-6" />,
-      technologies: ['Node.js', 'CodeIgniter 3', 'RESTful APIs'],
+      technologies: ['Next.js', 'PHP', 'Code Igniter 3', 'RESTful APIs'],
       color: 'category-backend'
     },
     {
@@ -38,7 +38,7 @@ const TechStackSection = () => {
     },
     {
       title: t.techStack.categories.devops,
-      icon: <Cloud className="h-6 w-6" />,
+      icon: <Container className="h-6 w-6" />,
       technologies: ['Vercel', 'Git', 'CI/CD', 'Version Control', 'Deployment'],
       color: 'category-devops'
     },

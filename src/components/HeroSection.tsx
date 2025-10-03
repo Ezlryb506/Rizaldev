@@ -81,7 +81,9 @@ const HeroSection = () => {
               </a>
 
               <a
-                href="/cv.pdf"
+                href={t.hero.cta.link} 
+                target="_blank"
+                rel="noopener noreferrer"
                 className="btn-secondary inline-flex items-center gap-2"
                 download
                 aria-label={t.hero.cta.download}
