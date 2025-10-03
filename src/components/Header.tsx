@@ -128,7 +128,7 @@ const Header = () => {
               variant="ghost"
               size="sm"
               onClick={toggleLanguage}
-              className="control-btn"
+              className="control-btn control-btn--lang"
               title="Toggle language"
             >
               <Languages className="h-4 w-4" />

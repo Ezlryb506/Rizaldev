@@ -185,14 +185,14 @@ export const translations = {
           timeline: '0-3 weeks'
         },
         integration: {
-          title: 'API & System Integration',
+          title: 'API & System Integration \u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0',
           description: 'Seamlessly connect your existing systems, third-party services, and databases for improved workflow efficiency.',
           features: ['RESTful APIs', 'Database integration', 'Third-party services', 'Data synchronization'],
           pricing: 'Starting from $100',
           timeline: '1-4 weeks'
         },
         consultation: {
-          title: 'AI Strategy Consultation',
+          title: 'AI Strategy Consultation \u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0',
           description: 'Strategic guidance on implementing AI tools and workflows to accelerate your development process and business operations.',
           features: ['Workflow analysis', 'AI tool recommendation', 'Implementation strategy', 'Technical Support'],
           pricing: 'Starting from $5/hour',
@@ -206,7 +206,7 @@ export const translations = {
           timeline: '0-2 weeks'
         },
         designSystem: {
-          title: 'Design System & UI Kit',
+          title: 'Design System & UI Kit \u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0',
           description: 'Build a scalable and consistent component system with Tailwind CSS and shadcn/ui to speed up development and ensure UI consistency.',
           features: ['Component library', 'Theming & tokens', 'Docs & usage guidelines', 'Accessibility best practices'],
           pricing: 'Starting from $80',

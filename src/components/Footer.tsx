@@ -10,6 +10,11 @@ const Footer = () => {
   const t = translations[language] || translations['en'];
   const currentYear = new Date().getFullYear();
 
+  // Helper function to format WhatsApp number
+  const formatWhatsAppNumber = (phoneNumber: string) => {
+    return phoneNumber.replace(/\D/g, '');
+  };
+
   // Build mailto link with subject/body preset per language
   const emailAddress = t.contact?.details?.email || 'arijalwinangun@gmail.com';
   const mailSubject = language === 'id'
@@ -26,7 +31,7 @@ const Footer = () => {
     { name: 'GitHub', icon: <Github className="h-5 w-5" />, url: 'https://github.com/Ezlryb506', description: 'View my code repositories' },
     { name: 'LinkedIn', icon: <Linkedin className="h-5 w-5" />, url: 'https://www.linkedin.com/in/arizal-winangun-319a67386', description: 'Connect with me professionally' },
     { name: 'Email', icon: <Mail className="h-5 w-5" />, url: gmailHref, description: 'Compose email in Gmail' },
-    { name: 'WhatsApp', icon: <MessageCircle className="h-5 w-5" />, url: `https://wa.me/${(t.contact?.details?.phone || '+62 888 0963 5936').replace(/\+/g, '').replace(/\s/g, '')}` , description: 'Quick consultation via WhatsApp' }
+    { name: 'WhatsApp', icon: <MessageCircle className="h-5 w-5" />, url: `https://wa.me/${formatWhatsAppNumber(t.contact?.details?.phone || '+62 888 0963 5936')}` , description: 'Quick consultation via WhatsApp' }
   ];
 
   const scrollToTop = () => {
@@ -104,7 +109,7 @@ const Footer = () => {
                   </div>
                   <div className="contact-item">
                     <MessageCircle className="h-4 w-4" />
-                    <a href={`https://wa.me/${t.contact.details.phone.replace(/\+/g, '')}`} className="contact-link">{t.contact.details.phone}</a>
+                    <a href={`https://wa.me/${formatWhatsAppNumber(t.contact.details.phone)}`} className="contact-link">{t.contact.details.phone}</a>
                   </div>
                   <div className="availability">
                     <div className="status-indicator"></div>

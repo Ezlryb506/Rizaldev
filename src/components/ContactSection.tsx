@@ -51,7 +51,61 @@ const ContactSection = () => {
 
   const { isSubmitting } = form.formState;
 
+  // Simplified focus function using DOM manipulation
+  const focusOnNameField = () => {
+    // Try multiple methods to find and focus the name input
+    const methods = [
+      // Method 1: Direct selector by name attribute
+      () => {
+        const input = document.querySelector('input[name="name"]') as HTMLInputElement;
+        if (input) {
+          input.focus();
+          input.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          return true;
+        }
+        return false;
+      },
+
+      // Method 2: Find by placeholder text
+      () => {
+        const inputs = document.querySelectorAll('input');
+        for (const input of inputs) {
+          if (input.placeholder && input.placeholder.toLowerCase().includes('name')) {
+            (input as HTMLInputElement).focus();
+            input.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            return true;
+          }
+        }
+        return false;
+      },
+
+      // Method 3: Find first input in form
+      () => {
+        const form = document.querySelector('.contact-form');
+        if (form) {
+          const firstInput = form.querySelector('input') as HTMLInputElement;
+          if (firstInput) {
+            firstInput.focus();
+            firstInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            return true;
+          }
+        }
+        return false;
+      }
+    ];
+
+    // Try each method
+    for (const method of methods) {
+      if (method()) {
+        return; // Success, exit early
+      }
+    }
+  };
+
   const onSubmit = async (values: FormValues) => {
+    // Focus on name field before submitting
+    focusOnNameField();
+
     try {
       console.info('[contact] submit payload', { ...values, language });
       const res = await fetch('/api/contact', {
@@ -83,11 +137,22 @@ const ContactSection = () => {
   };
 
   const handleWhatsAppContact = () => {
+    // Focus on name field before opening WhatsApp
+    focusOnNameField();
+
     const values = form.getValues();
     const message = `${language === 'id' ? 'Halo' : 'Hi'} Arizal, ${language === 'id' ? 'saya tertarik untuk mendiskusikan proyek pengembangan web' : 'I\'m interested in discussing a web development project'}. \n\n${language === 'id' ? 'Detail Proyek:' : 'Project Details:'}\n- ${language === 'id' ? 'Nama:' : 'Name:'} ${values.name || (language === 'id' ? 'Tidak disebutkan' : 'Not specified')}\n- ${language === 'id' ? 'Perusahaan:' : 'Company:'} ${values.company || (language === 'id' ? 'Tidak disebutkan' : 'Not specified')}\n- ${language === 'id' ? 'Anggaran:' : 'Budget:'} ${values.budget || (language === 'id' ? 'Akan didiskusikan' : 'To be discussed')}\n- ${language === 'id' ? 'Timeline:' : 'Timeline:'} ${values.timeline || (language === 'id' ? 'Fleksibel' : 'Flexible')}\n\n${language === 'id' ? 'Pesan:' : 'Message:'} ${values.message || (language === 'id' ? 'Menantikan diskusi tentang kebutuhan proyek saya.' : 'Looking forward to discussing my project requirements.')}`;
 
     const encodedMessage = encodeURIComponent(message);
     window.open(`https://wa.me/6288809635936?text=${encodedMessage}`, '_blank');
+  };
+
+  const handleEmailContact = () => {
+    // Focus on name field before showing email option
+    focusOnNameField();
+
+    // You can add additional email-specific functionality here if needed
+    // For now, just focus on the form to encourage form completion
   };
 
   const contactMethods = [
@@ -128,7 +193,7 @@ const ContactSection = () => {
                     </div>
                     <Button
                       className={`method-action ${method.primary ? 'primary' : 'secondary'}`}
-                      onClick={method.primary ? handleWhatsAppContact : () => {}}
+                      onClick={method.primary ? handleWhatsAppContact : handleEmailContact}
                       type="button"
                     >
                       {method.action}
@@ -185,7 +250,7 @@ const ContactSection = () => {
                           <FormItem className="form-group">
                             <FormLabel>{t.contact.form.fields.name}</FormLabel>
                             <FormControl>
-                              <Input className="px-5 py-3" placeholder={t.contact.form.placeholders.name} {...field} />
+                              <Input className="px-5 py-3 border-2 border-gray-200 hover:border-gray-300 focus:border-accent-primary focus:ring-2 focus:ring-accent-primary/20" placeholder={t.contact.form.placeholders.name} {...field} />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -198,7 +263,7 @@ const ContactSection = () => {
                           <FormItem className="form-group">
                             <FormLabel>{t.contact.form.fields.email}</FormLabel>
                             <FormControl>
-                              <Input className="px-5 py-3" type="email" placeholder={t.contact.form.placeholders.email} {...field} />
+                              <Input className="px-5 py-3 border-2 border-gray-200 hover:border-gray-300 focus:border-accent-primary focus:ring-2 focus:ring-accent-primary/20" type="email" placeholder={t.contact.form.placeholders.email} {...field} />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -214,7 +279,7 @@ const ContactSection = () => {
                           <FormItem className="form-group">
                             <FormLabel>{t.contact.form.fields.company}</FormLabel>
                             <FormControl>
-                              <Input className="px-5 py-3" placeholder={t.contact.form.placeholders.company} {...field} />
+                              <Input className="px-5 py-3 border-2 border-gray-200 hover:border-gray-300 focus:border-accent-primary focus:ring-2 focus:ring-accent-primary/20" placeholder={t.contact.form.placeholders.company} {...field} />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -227,7 +292,7 @@ const ContactSection = () => {
                           <FormItem className="form-group">
                             <FormLabel>{t.contact.form.fields.budget}</FormLabel>
                             <FormControl>
-                              <Input className="px-5 py-3" placeholder={t.contact.form.placeholders.budget} {...field} />
+                              <Input className="px-5 py-3 border-2 border-gray-200 hover:border-gray-300 focus:border-accent-primary focus:ring-0 focus:ring-accent-primary/20" placeholder={t.contact.form.placeholders.budget} {...field} />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -242,7 +307,7 @@ const ContactSection = () => {
                         <FormItem className="form-group">
                           <FormLabel>{t.contact.form.fields.timeline}</FormLabel>
                           <FormControl>
-                            <Input className="px-5 py-3" placeholder={t.contact.form.placeholders.timeline} {...field} />
+                            <Input className="px-5 py-3 border-2 border-gray-200 hover:border-gray-300 focus:border-accent-primary focus:ring-2 focus:ring-accent-primary/20" placeholder={t.contact.form.placeholders.timeline} {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -257,7 +322,7 @@ const ContactSection = () => {
                         render={({ field }) => (
                           <FormItem>
                             <FormControl>
-                              <Textarea className="px-5 py-4" placeholder={t.contact.form.placeholders.message} rows={5} {...field} />
+                              <Textarea className="px-5 py-4 border-2 border-gray-200 hover:border-gray-300 focus:border-accent-primary focus:ring-2 focus:ring-accent-primary/20 resize-y min-h-[140px]" placeholder={t.contact.form.placeholders.message} rows={5} {...field} />
                             </FormControl>
                             <FormMessage />
                           </FormItem>

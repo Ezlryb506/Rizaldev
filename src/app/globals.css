@@ -271,6 +271,23 @@ img, video, svg, canvas, iframe {
   transition: all 0.2s ease;
   padding: 8px; /* ensure inner icon/text has breathing room */
 }
+
+/* Ensure equal touch height on mobile for icon toggles */
+@media (max-width: 640px) {
+  .control-btn:not(.control-btn--lang) {
+    height: 44px;
+    width: 44px;
+    padding: 10px;
+  }
+  .control-btn.mobile-toggle {
+    height: 44px;
+    width: 44px;
+  }
+  /* Language toggle matches height while keeping wider width */
+  .control-btn--lang {
+    height: 44px;
+  }
+}
 .control-btn:hover { background: var(--accent-primary); color: var(--bg-primary); transform: translateY(-2px); }
 
 /* Mobile dropdown menu (hidden by default) */
@@ -922,3 +939,17 @@ img, video, svg, canvas, iframe {
 .detail-item svg { color: var(--accent-primary); flex-shrink: 0; }
 .contact-link { color: var(--text-secondary); text-decoration: none; font-size: 16px; }
 .contact-link:hover { color: var(--accent-primary); text-decoration: underline; }
+/* Wider language toggle button without affecting other controls */
+.control-btn--lang {
+  width: auto;
+  min-width: 68px;
+  height: 40px;
+  padding: 0 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+@media (max-width: 640px) {
+  .control-btn--lang { min-width: 60px; padding: 0 8px; }
+}
