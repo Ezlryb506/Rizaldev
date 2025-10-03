@@ -392,10 +392,10 @@ img, video, svg, canvas, iframe {
   background: var(--border-subtle);
 }
 .form-alternative span { padding: 0 var(--space-xs); }
-.contact-form input,
+.contact-form input { padding: var(--space-sm) var(--space-xs); }
 .contact-form textarea {
   /* Ensure generous inner spacing so placeholder/text don't touch borders */
-  padding: var(--space-sm) var(--space-lg);
+  padding: var(--space-xs) var(--space-xs);
 }
 .submit-btn { background: var(--accent-primary); color: var(--bg-primary); border: none; border-radius: var(--radius-md); padding: var(--space-md) var(--space-lg); font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.2s ease; display: flex; align-items: center; justify-content: center; gap: var(--space-sm); min-height: 52px; }
 .submit-btn:hover:not(:disabled) { background: var(--accent-hover); transform: translateY(-2px); }

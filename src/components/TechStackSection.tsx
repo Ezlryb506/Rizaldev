@@ -73,7 +73,7 @@ const TechStackSection = () => {
   );
 
   return (
-    <section className="tech-stack-section" id="about">
+    <section className="tech-stack-section" id="stack">
       <div className="container">
         <div className="section-header">
           <h2 className="section-title">{t.techStack.title}</h2>

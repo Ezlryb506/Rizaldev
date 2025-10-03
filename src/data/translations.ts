@@ -4,6 +4,7 @@ export const translations = {
     // Navigation
     nav: {
       about: 'About',
+      stack: 'Tech Stack',
       projects: 'Projects',
       services: 'Services',
       contact: 'Contact'
@@ -246,11 +247,11 @@ export const translations = {
     // Contact Section
     contact: {
       title: "Let's Build Something Amazing Together",
-      description: "Ready to accelerate your web development project with AI-assisted workflows? Let's discuss your requirements and explore how I can help your business website grow.",
+      description: "Don't know where to start? Contact me via WhatsApp, I'll ask you questions to help you make a decision, then I'll create a proposal and a visual design for your page for free.",
       methods: {
         whatsapp: {
           title: 'WhatsApp Consultation',
-          description: 'Quick response, instant communication',
+          description: 'Quick response, instant reply',
           action: 'Chat Now'
         },
         email: {
@@ -277,11 +278,11 @@ export const translations = {
         },
         placeholders: {
           name: 'Your full name',
-          email: 'your.email@company.com',
+          email: 'your.email@domain.com',
           company: 'Your company name',
           budget: 'e.g., $100 - $500',
           timeline: 'e.g., 2-3 months, ASAP, Flexible',
-          message: 'Describe your project requirements, goals, and any specific features you need...'
+          message: '- What is the main problem you want to solve?\n- Do you have any reference?\n- What are the mandatory features that you need?'
         },
         actions: {
           send: 'Send Message',
@@ -324,6 +325,7 @@ export const translations = {
     // Navigation
     nav: {
       about: 'Tentang',
+      stack: 'Stack Teknologi',
       projects: 'Proyek',
       services: 'Layanan',
       contact: 'Kontak'
@@ -500,11 +502,11 @@ export const translations = {
           title: 'Frontend & Landing Page Berkecepatan Tinggi',
           description: 'Landing page dan frontend yang sangat cepat dan dioptimalkan untuk konversi yang menarik pengguna dan mendorong hasil bisnis.',
           features: ['Dioptimalkan performa', 'SEO friendly', 'Fokus konversi', 'Siap A/B test'],
-          pricing: 'Mulai dari Rp. 300k',
+          pricing: 'Mulai dari Rp. 150k',
           timeline: '0-3 minggu'
         },
         integration: {
-          title: 'Integrasi API & Sistem',
+          title: 'Integrasi API & Sistem \u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0',
           description: 'Menghubungkan dengan mulus sistem yang ada, layanan pihak ketiga, dan database untuk meningkatkan efisiensi alur kerja.',
           features: ['RESTful APIs', 'Integrasi database', 'Layanan pihak ketiga', 'Sinkronisasi data'],
           pricing: 'Mulai dari Rp. 1.5 Jt',
@@ -566,16 +568,16 @@ export const translations = {
     // Contact Section
     contact: {
       title: 'Mari Membangun Sesuatu yang Luar Biasa Bersama',
-      description: 'Siap mempercepat proyek pengembangan web Anda dengan alur kerja berbantuan AI? Mari diskusikan kebutuhan Anda dan berdiskusi tentang bagaimana saya dapat membantu website bisnis Anda berkembang.',
+      description: 'Belum tahu harus mulai dari mana? hubungi Saya dengan whatsapp, Saya akan memberikan anda pertanyaan yang dapat membantu anda membuat pilihan, setelah itu Saya akan buatkan proposal dan tampilan visual halaman dengan gratis.',
       methods: {
         whatsapp: {
           title: 'Konsultasi WhatsApp',
-          description: 'Respon cepat, komunikasi instan',
+          description: 'Komunikasi cepat dan langsung',
           action: 'Chat Sekarang'
         },
         email: {
           title: 'Diskusi Email',
-          description: 'Persyaratan proyek detail',
+          description: 'Kebutuhan proyek yang mendetail',
           action: 'Kirim Email'
         }
       },
@@ -597,11 +599,11 @@ export const translations = {
         },
         placeholders: {
           name: 'Nama lengkap Anda',
-          email: 'email.anda@perusahaan.com',
+          email: 'Email.anda@domain.com',
           company: 'Nama perusahaan Anda',
-          budget: 'misal, Rp. 1.5 Jt - Rp. 8 Jt',
-          timeline: 'misal, 2-3 bulan, SEGERA, Fleksibel',
-          message: 'Jelaskan persyaratan proyek, tujuan, dan fitur spesifik yang Anda butuhkan...'
+          budget: 'Mis. Rp. 1 Jt - Rp. 30 Jt',
+          timeline: 'Mis. 2-3 bulan, SEGERA, Fleksibel',
+          message: '- Apa masalah utama yang ingin diselesaikan?\n- Kamu punya contoh referensi?\n- Apa fitur wajib yang kamu butuhkan?'
         },
         actions: {
           send: 'Kirim Pesan',
@@ -640,3 +642,5 @@ export const translations = {
     }
   }
 };
+
+
