@@ -10,11 +10,23 @@ const Footer = () => {
   const t = translations[language] || translations['en'];
   const currentYear = new Date().getFullYear();
 
+  // Build mailto link with subject/body preset per language
+  const emailAddress = t.contact?.details?.email || 'arijalwinangun@gmail.com';
+  const mailSubject = language === 'id'
+    ? 'Permintaan Konsultasi dari Portfolio'
+    : 'Consultation Request from Portfolio';
+  const mailBody = language === 'id'
+    ? `Halo Arizal,%0D%0A%0D%0ASaya tertarik untuk mendiskusikan proyek pengembangan web. Berikut ringkasannya:%0D%0A- Nama:%0D%0A- Perusahaan:%0D%0A- Anggaran Perkiraan:%0D%0A- Timeline:%0D%0A- Deskripsi singkat kebutuhan:%0D%0A%0D%0ATerima kasih.`
+    : `Hi Arizal,%0D%0A%0D%0AI'm interested in discussing a web development project. Here is a brief summary:%0D%0A- Name:%0D%0A- Company:%0D%0A- Estimated Budget:%0D%0A- Timeline:%0D%0A- Short description of needs:%0D%0A%0D%0AThank you.`;
+  // Keep classic mailto if needed later; currently not used
+  // const mailtoHref = `mailto:${emailAddress}?subject=${encodeURIComponent(mailSubject)}&body=${mailBody}`;
+  const gmailHref = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(emailAddress)}&su=${encodeURIComponent(mailSubject)}&body=${mailBody}`;
+
   const socialLinks = [
-    { name: 'GitHub', icon: <Github className="h-5 w-5" />, url: 'https://github.com/arizalwinangun', description: 'View my code repositories' },
-    { name: 'LinkedIn', icon: <Linkedin className="h-5 w-5" />, url: 'https://linkedin.com/in/arizalwinangun', description: 'Connect with me professionally' },
-    { name: 'Email', icon: <Mail className="h-5 w-5" />, url: 'mailto:arijalwinangun@gmail.com', description: 'Send me a direct email' },
-    { name: 'WhatsApp', icon: <MessageCircle className="h-5 w-5" />, url: 'https://wa.me/6288809635936', description: 'Quick consultation via WhatsApp' }
+    { name: 'GitHub', icon: <Github className="h-5 w-5" />, url: 'https://github.com/Ezlryb506', description: 'View my code repositories' },
+    { name: 'LinkedIn', icon: <Linkedin className="h-5 w-5" />, url: 'https://www.linkedin.com/in/arizal-winangun-319a67386', description: 'Connect with me professionally' },
+    { name: 'Email', icon: <Mail className="h-5 w-5" />, url: gmailHref, description: 'Compose email in Gmail' },
+    { name: 'WhatsApp', icon: <MessageCircle className="h-5 w-5" />, url: `https://wa.me/${(t.contact?.details?.phone || '+62 888 0963 5936').replace(/\+/g, '').replace(/\s/g, '')}` , description: 'Quick consultation via WhatsApp' }
   ];
 
   const scrollToTop = () => {
@@ -33,11 +45,23 @@ const Footer = () => {
                 <p className="brand-description">{t.footer.brand.description}</p>
               </div>
               <div className="social-links">
-                {socialLinks.map((link, index) => (
-                  <a key={index} href={link.url} className="social-link" target="_blank" rel="noopener noreferrer" title={link.description}>
-                    {link.icon}
-                  </a>
-                ))}
+                {socialLinks.map((link, index) => {
+                  const isHttp = /^https?:\/\//.test(link.url);
+                  const target = isHttp ? "_blank" : undefined;
+                  const rel = isHttp ? "noopener noreferrer" : undefined;
+                  return (
+                    <a
+                      key={index}
+                      href={link.url}
+                      className="social-link"
+                      target={target}
+                      rel={rel}
+                      title={link.description}
+                    >
+                      {link.icon}
+                    </a>
+                  );
+                })}
               </div>
             </div>
             <div className="footer-links">
@@ -46,7 +70,13 @@ const Footer = () => {
                 <ul className="link-list">
                   {Object.entries(t.nav).map(([key, value]) => (
                     <li key={key}>
-                      <a href={`#${key}`} className="footer-link">{value}</a>
+                      <a
+                        href={`/#${key}`}
+                        className="footer-link"
+                        aria-label={`Go to ${value}`}
+                      >
+                        {value}
+                      </a>
                     </li>
                   ))}
                 </ul>
@@ -65,6 +95,12 @@ const Footer = () => {
                   <div className="contact-item">
                     <Mail className="h-4 w-4" />
                     <a href={`mailto:${t.contact.details.email}`} className="contact-link">{t.contact.details.email}</a>
+                  </div>
+                  <div className="contact-item">
+                    <Mail className="h-4 w-4" />
+                    <a href={gmailHref} target="_blank" rel="noopener noreferrer" className="contact-link" aria-label="Compose email in Gmail with preset subject and body">
+                      {(language === 'id' ? 'Kirim via Gmail' : 'Send via Gmail')}
+                    </a>
                   </div>
                   <div className="contact-item">
                     <MessageCircle className="h-4 w-4" />

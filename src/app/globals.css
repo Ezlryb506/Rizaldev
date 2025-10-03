@@ -149,8 +149,8 @@
   --accent-glow: rgba(59, 130, 246, 0.3);
 }
 
-/* Light Theme (Optional) */
-.theme-light {
+/* Light Theme (used when next-themes sets `class="light"` on <html>) */
+.light, .theme-light {
   --bg-primary: rgb(255, 255, 255);
   --bg-secondary: rgb(249, 250, 251);
   --bg-tertiary: rgb(243, 244, 246);
@@ -224,7 +224,8 @@ img, video, svg, canvas, iframe {
   top: 0;
   left: 0;
   right: 0;
-  background: rgba(17, 17, 19, 0.9);
+  /* Use theme variable so it adapts in light mode */
+  background: var(--bg-primary);
   backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border-subtle);
   z-index: 100;
@@ -255,9 +256,11 @@ img, video, svg, canvas, iframe {
   font-size: 16px;
   font-weight: 500;
   cursor: pointer;
-  transition: color 0.2s ease;
+  transition: color 0.2s ease, border-color 0.2s ease;
   padding: var(--space-sm);
+  border-bottom: 2px solid transparent;
 }
+.nav-link.active { color: var(--accent-primary); border-bottom-color: var(--accent-primary); }
 .nav-link:hover { color: var(--accent-primary); }
 .header-controls { display: flex; gap: var(--space-sm); }
 .control-btn {
@@ -276,7 +279,8 @@ img, video, svg, canvas, iframe {
   flex-direction: column;
   gap: var(--space-sm);
   padding: var(--space-md);
-  background: rgba(17, 17, 19, 0.95);
+  /* Use theme variable so it adapts in light mode */
+  background: var(--bg-primary);
   border-bottom: 1px solid var(--border-subtle);
   backdrop-filter: blur(16px);
 }
@@ -289,6 +293,7 @@ img, video, svg, canvas, iframe {
   padding: var(--space-sm) var(--space-md);
   text-align: left;
 }
+.mobile-link.active { color: var(--accent-primary); border-color: var(--accent-primary); }
 .mobile-link:hover { color: var(--accent-primary); border-color: var(--accent-primary); }
 
 /* Section common */
@@ -300,6 +305,12 @@ img, video, svg, canvas, iframe {
 .section-description {
   font-size: 20px; color: var(--text-secondary);
   max-width: 600px; margin: 0 auto; line-height: 1.6;
+}
+
+/* Hero tweaks to improve LCP (limit paragraph width for faster layout/paint) */
+.hero-description { max-width: 42ch; }
+@media (max-width: 480px) {
+  .hero-description { max-width: 36ch; }
 }
 
 /* Projects */
@@ -381,10 +392,10 @@ img, video, svg, canvas, iframe {
   background: var(--border-subtle);
 }
 .form-alternative span { padding: 0 var(--space-xs); }
-.contact-form input,
+.contact-form input { padding: var(--space-sm) var(--space-xs); }
 .contact-form textarea {
   /* Ensure generous inner spacing so placeholder/text don't touch borders */
-  padding: var(--space-sm) var(--space-lg);
+  padding: var(--space-xs) var(--space-xs);
 }
 .submit-btn { background: var(--accent-primary); color: var(--bg-primary); border: none; border-radius: var(--radius-md); padding: var(--space-md) var(--space-lg); font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.2s ease; display: flex; align-items: center; justify-content: center; gap: var(--space-sm); min-height: 52px; }
 .submit-btn:hover:not(:disabled) { background: var(--accent-hover); transform: translateY(-2px); }
