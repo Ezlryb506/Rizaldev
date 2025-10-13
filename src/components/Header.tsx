@@ -26,42 +26,132 @@ const Header = () => {
 
   // Observe sections to highlight active nav item
   React.useEffect(() => {
-    // Re-evaluate on route changes so observer attaches when landing page mounts
+    if (typeof window === 'undefined') return;
+
     const sectionIds = ['hero', 'stack', 'services', 'projects', 'contact'];
-    const elements = sectionIds
-      .map((id) => document.getElementById(id))
-      .filter((el): el is HTMLElement => Boolean(el));
-
-    if (elements.length === 0) {
-      // Not on a page with sections; clear active state
-      setCurrentSection(null);
-      return;
-    }
-
     const headerOffset = 70; // header height
+    const thresholds = Array.from({ length: 21 }, (_, index) => index / 20);
+    const observedElements = new Map<string, HTMLElement>();
+    const ratios = new Map<string, number>();
+
+    const resolveNavId = (sectionId: string | null) =>
+      sectionId === 'hero' ? 'about' : sectionId;
+
+    const updateCurrentSectionFromState = () => {
+      if (observedElements.size === 0) {
+        setCurrentSection((prev) => (prev === null ? prev : null));
+        return;
+      }
+
+      let nextSection: string | null = null;
+      let bestRatio = 0;
+
+      sectionIds.forEach((id) => {
+        const ratio = ratios.get(id);
+        if (ratio === undefined) return;
+        if (ratio > bestRatio) {
+          bestRatio = ratio;
+          nextSection = id;
+        }
+      });
+
+      if (!nextSection) {
+        observedElements.forEach((element, id) => {
+          if (nextSection) return;
+          const rect = element.getBoundingClientRect();
+          if (rect.top <= headerOffset && rect.bottom >= headerOffset) {
+            nextSection = id;
+          }
+        });
+      }
+
+      if (!nextSection) {
+        let smallestPositive = Number.POSITIVE_INFINITY;
+        observedElements.forEach((element, id) => {
+          const rect = element.getBoundingClientRect();
+          if (rect.top > headerOffset && rect.top < smallestPositive) {
+            smallestPositive = rect.top;
+            nextSection = id;
+          }
+        });
+      }
+
+      if (!nextSection) {
+        let largestNegative = -Number.POSITIVE_INFINITY;
+        observedElements.forEach((element, id) => {
+          const rect = element.getBoundingClientRect();
+          if (rect.bottom < headerOffset && rect.bottom > largestNegative) {
+            largestNegative = rect.bottom;
+            nextSection = id;
+          }
+        });
+      }
+
+      const navId = resolveNavId(nextSection);
+      setCurrentSection((prev) => (prev === navId ? prev : navId));
+    };
+
     const observer = new IntersectionObserver(
       (entries) => {
-        let top: { id: string; ratio: number } | null = null;
-        for (const entry of entries) {
+        entries.forEach((entry) => {
+          const id = (entry.target as HTMLElement).id;
+          if (!id) return;
+
           if (entry.isIntersecting) {
-            const id = (entry.target as HTMLElement).id;
-            const ratio = entry.intersectionRatio;
-            if (!top || ratio > top.ratio) top = { id, ratio };
+            ratios.set(id, entry.intersectionRatio);
+          } else {
+            ratios.delete(id);
           }
-        }
-        if (top) {
-          setCurrentSection(top.id === 'hero' ? 'about' : top.id);
-        }
+        });
+
+        updateCurrentSectionFromState();
       },
       {
         root: null,
-        threshold: [0.25, 0.5, 0.75],
+        threshold: thresholds,
         rootMargin: `-${headerOffset}px 0px -40% 0px`,
       }
     );
 
-    elements.forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
+    const observeAvailableSections = () => {
+      sectionIds.forEach((id) => {
+        if (observedElements.has(id)) return;
+
+        const element = document.getElementById(id);
+        if (element) {
+          observedElements.set(id, element);
+          observer.observe(element);
+        }
+      });
+
+      updateCurrentSectionFromState();
+    };
+
+    observeAvailableSections();
+
+    const mutationObserver = new MutationObserver(() => {
+      observeAvailableSections();
+
+      const allObserved = sectionIds.every((id) => observedElements.has(id));
+      if (allObserved) {
+        mutationObserver.disconnect();
+      }
+    });
+
+    const targetNode = document.body;
+    if (targetNode) {
+      mutationObserver.observe(targetNode, {
+        childList: true,
+        subtree: true,
+      });
+    }
+
+    return () => {
+      mutationObserver.disconnect();
+      observer.disconnect();
+      ratios.clear();
+      observedElements.clear();
+    };
   }, [pathname]);
 
   const scrollToSection = (sectionId: string) => {
