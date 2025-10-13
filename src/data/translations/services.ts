@@ -32,7 +32,7 @@ export const servicesTranslations = {
           timeline: "0-3 weeks",
         },
         integration: {
-          title: "API & System Integration",
+          title: "API & System Integration \u2003\u2003\u2003\u2003\u2003\u2003\u2003\u2003\u2003\u2003",
           description:
             "Seamlessly connect your existing systems, third-party services, and databases for improved workflow efficiency.",
           features: [
@@ -45,7 +45,7 @@ export const servicesTranslations = {
           timeline: "1-4 weeks",
         },
         consultation: {
-          title: "AI Strategy Consultation",
+          title: "AI Strategy Consultation \u2003\u2003\u2003\u2003\u2003\u2003\u2003\u2003\u2003\u2003",
           description:
             "Strategic guidance on implementing AI tools and workflows to accelerate your development process and business operations.",
           features: [
@@ -71,7 +71,7 @@ export const servicesTranslations = {
           timeline: "0-2 weeks",
         },
         designSystem: {
-          title: "Design System & UI Kit",
+          title: "Design System & UI Kit \u2003\u2003\u2003\u2003\u2003\u2003\u2003\u2003\u2003",
           description:
             "Build a scalable and consistent component system with Tailwind CSS and shadcn/ui to speed up development and ensure UI consistency.",
           features: [
@@ -154,7 +154,7 @@ export const servicesTranslations = {
           timeline: "0-3 minggu",
         },
         integration: {
-          title: "Integrasi API & Sistem",
+          title: "Integrasi API & Sistem \u2003\u2003\u2003\u2003\u2003\u2003\u2003\u2003\u2003\u2003\u2003",
           description:
             "Menghubungkan dengan mulus sistem yang ada, layanan pihak ketiga, dan database untuk meningkatkan efisiensi alur kerja.",
           features: [

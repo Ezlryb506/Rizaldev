@@ -1,7 +1,7 @@
 import { heroContent } from '@/data/hero';
 
 const HERO_WHATSAPP_NUMBER = '6288809635936';
-const HERO_CV_LINK = 'https://docs.google.com/document/d/1OomTs1wdttBdxpr6T-j5KmB94IoEvow6/edit?usp=drive_link&ouid=116978898334304098138&rtpof=true&sd=true';
+const HERO_CV_LINK = 'https://drive.google.com/file/d/1d1nprNA4iZk7_yvMMSYRayiOJfp01LdH/view?usp=sharing';
 
 const whatsappLinks = {
   en: `https://wa.me/${HERO_WHATSAPP_NUMBER}?text=${encodeURIComponent(heroContent.en.cta.waMessage)}`,
