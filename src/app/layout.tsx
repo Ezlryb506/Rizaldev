@@ -34,11 +34,11 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Arizal Winangun — Fullstack Developer",
+    default: "Arizal Winangun - Fullstack Developer",
     template: "%s | Arizal Winangun",
   },
   description:
-    "Arizal Winangun — Fullstack/Frontend Developer. Jasa pembuatan website cepat, SEO-friendly, modern stack (Next.js, React, TypeScript). Terima proyek company profile, landing page, e‑commerce, dan aplikasi web. ",
+    "Portfolio of Arizal Winangun, a fullstack/frontend developer delivering fast, SEO-friendly websites built with Next.js, React, and TypeScript. Available for company profile, landing page, ecommerce, and custom web app projects.",
   keywords: [
     "Arizal Winangun",
     "Fullstack Developer",
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
     type: "website",
     url: SITE_URL,
     siteName: "Arizal Winangun",
-    title: "Arizal Winangun — Fullstack Developer",
+    title: "Arizal Winangun - Fullstack Developer",
     description:
       "Fullstack/Frontend Developer. Jasa pembuatan website cepat, SEO-friendly dengan Next.js + React.",
     locale: "en_US",
@@ -70,17 +70,17 @@ export const metadata: Metadata = {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Arizal Winangun — Fullstack Developer",
+        alt: "Arizal Winangun - Fullstack Developer",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Arizal Winangun — Fullstack Developer",
+    title: "Arizal Winangun - Fullstack Developer",
     description:
       "Fullstack/Frontend Developer. Jasa pembuatan website cepat, SEO-friendly.",
     images: ["/og-image.jpg"],
-    },
+  },
 };
 
 export default async function RootLayout({

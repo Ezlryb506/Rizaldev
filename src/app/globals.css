@@ -545,6 +545,11 @@ img, video, svg, canvas, iframe {
 }
 
 /* ===== Hero Section (ported for pixel parity) ===== */
+html[lang="en"] [data-lang="id"],
+html[lang="id"] [data-lang="en"] {
+  display: none !important;
+}
+
 .hero-section {
   /* Reduce top gap from header and make it responsive */
   padding: clamp(56px, 8vh, 120px) 0 var(--space-2xl);
@@ -996,3 +1001,6 @@ img, video, svg, canvas, iframe {
 @media (max-width: 640px) {
   .control-btn--lang { min-width: 60px; padding: 0 8px; }
 }
+
+
+

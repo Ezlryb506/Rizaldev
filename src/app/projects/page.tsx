@@ -5,7 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { ExternalLink, Github, Images, ArrowRight, X } from "lucide-react";
 import { useLanguage, type SupportedLanguage } from "@/contexts/LanguageContext";
-import { translations } from "@/data/translations";
+import { projectsTranslations } from "@/data/translations/projects";
+import { coreTranslations } from "@/data/translations/core";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
@@ -14,7 +15,7 @@ import { Card, CardContent } from "@/components/ui/card";
 
 // Types aligned with existing components
 
-type LanguageKeys = keyof typeof translations; // 'en' | 'id'
+type LanguageKeys = keyof typeof projectsTranslations; // 'en' | 'id'
 
 type ProjectKey = "quicktix" | "abadiJaya" | (string & {});
 
@@ -24,7 +25,7 @@ type ProjectBase = {
   liveUrl: string;
   githubUrl: string;
   category: string;
-  technologies: string[];
+  technologies: readonly string[];
   photosUrl?: string;
 };
 
@@ -32,13 +33,14 @@ type ProjectLocalized = {
   title?: string;
   status?: string;
   description?: string;
-  features?: string[];
+  features?: readonly string[];
 };
 
 export default function ProjectsPage() {
   const { language } = useLanguage();
   const lang: SupportedLanguage = language;
-  const t = translations[lang as LanguageKeys];
+  const t = projectsTranslations[lang as LanguageKeys];
+  const ct = coreTranslations[lang as LanguageKeys];
   const pt = t.projects;
 
   // Merge localization fields from list
@@ -157,7 +159,7 @@ export default function ProjectsPage() {
     <main className="projects-section">
       <div className="container">
         <div className="section-header">
-          <h1 className="section-title">{t.nav.projects}</h1>
+          <h1 className="section-title">{ct.nav.projects}</h1>
           <p className="section-description">{pt.description}</p>
         </div>
 

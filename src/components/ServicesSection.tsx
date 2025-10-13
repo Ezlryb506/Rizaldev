@@ -4,11 +4,11 @@ import React from 'react';
 import { Globe, Zap, Puzzle, Brain, Clock, Shield, Lightbulb, Rocket, Gauge, LayoutGrid, ShieldCheck, BadgeDollarSign } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { translations } from '@/data/translations';
+import { servicesTranslations } from '@/data/translations/services';
 
 // Derive strong types for keys from the English translation shape (keys are consistent across locales)
-type ServiceKey = keyof typeof translations.en.services.list;
-type AdvantageKey = keyof typeof translations.en.services.advantages.list;
+type ServiceKey = keyof typeof servicesTranslations.en.services.list;
+type AdvantageKey = keyof typeof servicesTranslations.en.services.advantages.list;
 
 const serviceIcons: Record<ServiceKey, React.ReactNode> = {
   webDev: <Globe className="h-8 w-8" />,
@@ -30,7 +30,7 @@ const advantageIcons: Record<AdvantageKey, React.ReactNode> = {
 
 const ServicesSection = () => {
   const { language } = useLanguage();
-  const t = translations[language] || translations['en'];
+  const t = servicesTranslations[language] || servicesTranslations.en;
 
   // Use typed keys to avoid string index errors
   const serviceKeys = Object.keys(t.services.list) as ServiceKey[];

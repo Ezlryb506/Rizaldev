@@ -20,7 +20,7 @@ import {
   FormMessage
 } from "@/components/ui/form";
 import { useLanguage } from '@/contexts/LanguageContext';
-import { translations } from '@/data/translations';
+import { contactTranslations } from '@/data/translations/contact';
 
 const formSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),
@@ -35,7 +35,7 @@ type FormValues = z.infer<typeof formSchema>
 
 const ContactSection = () => {
   const { language } = useLanguage();
-  const t = translations[language] || translations['en'];
+  const t = contactTranslations[language] || contactTranslations.en;
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),

@@ -87,6 +87,7 @@ export const LanguageProvider = ({ children, initialLanguage }: ProviderProps) =
   }, [initialLanguage]);
 
   useEffect(() => {
+    document.documentElement.setAttribute('lang', language);
     document.body.classList.remove('lang-en', 'lang-id');
     document.body.classList.add(`lang-${language}`);
   }, [language]);

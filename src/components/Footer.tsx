@@ -3,11 +3,11 @@
 import React from 'react';
 import { Github, Linkedin, Mail, MessageCircle, ExternalLink } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { translations } from '@/data/translations';
+import { coreTranslations } from '@/data/translations/core';
 
 const Footer = () => {
   const { language } = useLanguage();
-  const t = translations[language] || translations['en'];
+  const t = coreTranslations[language] || coreTranslations.en;
   const currentYear = new Date().getFullYear();
 
   // Helper function to format WhatsApp number
