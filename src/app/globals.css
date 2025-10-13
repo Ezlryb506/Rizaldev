@@ -218,6 +218,49 @@ img, video, svg, canvas, iframe {
   padding: 0 var(--space-md);
 }
 
+/* ===== Services Page Enhancements ===== */
+.services-hero {
+  background: linear-gradient(180deg, rgba(218,255,1,0.08), transparent 40%);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+}
+.services-hero .hero-title {
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+.services-hero .hero-subtitle {
+  color: var(--text-secondary);
+  font-size: 16px;
+  margin-top: var(--space-sm);
+}
+.keyword-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: var(--space-md); }
+.keyword-chip {
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-primary);
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-size: 12px;
+}
+.section-divider {
+  height: 1px;
+  background: var(--border-subtle);
+  margin: var(--space-xl) 0;
+}
+
+/* Keep cards aligned: content grows, CTA sticks to bottom */
+.service-card-content { display: flex; flex-direction: column; height: 100%; }
+.service-chip-block { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: var(--space-md); min-height: 96px; }
+.service-cta { margin-top: auto; display: flex; gap: var(--space-md); }
+.service-cta .project-btn { padding: 12px 24px; border-radius: var(--radius-md); }
+.faq-section { margin-bottom: var(--space-2xl); }
+.faq-grid { margin-top: var(--space-lg); }
+
+/* Offset content from fixed header (70px) when page starts with hero */
+.page-with-sticky-header { padding-top: 96px; }
+
 /* Header */
 .header {
   position: fixed;

@@ -33,7 +33,7 @@ const TechStackSection = () => {
     {
       title: t.techStack.categories.ai,
       icon: <Bot className="h-6 w-6" />,
-      technologies: ['LLM', 'GitHub Copilot', 'Cursor', 'VS Code', 'Windsurf', 'Emergent AI', 'Prompt Engineering'],
+      technologies: ['LLM', 'GitHub Copilot', 'Cursor', 'VS Code', 'Windsurf', 'Codex', 'Emergent AI', 'Prompt Engineering'],
       color: 'category-ai'
     },
     {
