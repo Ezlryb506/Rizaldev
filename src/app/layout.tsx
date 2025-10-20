@@ -34,22 +34,28 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Arizal Winangun — Fullstack Developer",
+    default: "Arizal Winangun — Fullstack & SEO-Focused Developer",
     template: "%s | Arizal Winangun",
   },
   description:
-    "Arizal Winangun — Fullstack/Frontend Developer. Jasa pembuatan website cepat, SEO-friendly, modern stack (Next.js, React, TypeScript). Terima proyek company profile, landing page, e‑commerce, dan aplikasi web. ",
+    "Portofolio Arizal Winangun, Fullstack & Frontend Developer berbasis di Indonesia. Spesialis website cepat, SEO-friendly, dan scalable dengan Next.js, React, TypeScript, serta workflow berbantuan AI untuk bisnis, startup, dan UKM.",
   keywords: [
     "Arizal Winangun",
-    "Fullstack Developer",
-    "Frontend Developer",
-    "Jasa pembuatan website",
-    "Web developer Indonesia",
-    "Next.js",
-    "React",
-    "TypeScript",
-    "Portfolio",
+    "Fullstack Developer Indonesia",
+    "Jasa Pembuatan Website",
+    "Jasa Frontend Next.js",
+    "Web Developer Jakarta",
+    "Optimasi SEO",
+    "Pengembangan Aplikasi Web",
+    "Landing Page",
+    "Company Profile",
+    "AI Assisted Development",
   ],
+  category: "technology",
+  applicationName: "Arizal Winangun Portfolio",
+  authors: [{ name: "Arizal Winangun", url: SITE_URL }],
+  creator: "Arizal Winangun",
+  publisher: "Arizal Winangun",
   alternates: {
     canonical: "/",
     languages: {
@@ -60,27 +66,46 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: SITE_URL,
-    siteName: "Arizal Winangun",
-    title: "Arizal Winangun — Fullstack Developer",
+    siteName: "Arizal Winangun Portfolio",
+    title: "Arizal Winangun — Fullstack & SEO-Focused Developer",
     description:
-      "Fullstack/Frontend Developer. Jasa pembuatan website cepat, SEO-friendly dengan Next.js + React.",
-    locale: "en_US",
+      "Fullstack & Frontend Developer berbasis Next.js/React. Menawarkan jasa website cepat, aman, dan ramah SEO untuk bisnis modern.",
+    locale: "id_ID",
+    alternateLocale: "en_US",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Arizal Winangun — Fullstack Developer",
+        alt: "Portofolio Arizal Winangun — Fullstack Developer",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Arizal Winangun — Fullstack Developer",
+    title: "Arizal Winangun — Fullstack & SEO-Focused Developer",
     description:
-      "Fullstack/Frontend Developer. Jasa pembuatan website cepat, SEO-friendly.",
+      "Developer Next.js & React. Bangun website cepat, aman, dan siap tumbuh dengan workflow berbantuan AI.",
     images: ["/og-image.jpg"],
+    creator: "@arijalwinangun",
+    site: "@arijalwinangun",
+  },
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      maxSnippet: -1,
+      maxImagePreview: "large",
+      maxVideoPreview: -1,
     },
+  },
 };
 
 export default async function RootLayout({
