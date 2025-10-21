@@ -545,6 +545,11 @@ img, video, svg, canvas, iframe {
 }
 
 /* ===== Hero Section (ported for pixel parity) ===== */
+html[lang="en"] [data-lang="id"],
+html[lang="id"] [data-lang="en"] {
+  display: none !important;
+}
+
 .hero-section {
   /* Reduce top gap from header and make it responsive */
   padding: clamp(56px, 8vh, 120px) 0 var(--space-2xl);
@@ -566,7 +571,10 @@ img, video, svg, canvas, iframe {
 .title-role { display: block; font-size: 48px; font-weight: 700; color: var(--text-secondary); margin-bottom: var(--space-xs); }
 .title-specialization { display: block; font-size: 32px; font-weight: 600; color: var(--text-muted); }
 .accent-text { color: var(--accent-primary); font-weight: 700; }
-.hero-description { font-size: 20px; color: var(--text-secondary); margin-bottom: var(--space-xl); max-width: 600px; line-height: 1.6; }
+.hero-description { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-size: 20px; color: var(--text-secondary); margin-bottom: var(--space-xl); max-width: 600px; line-height: 1.6; }
+.font-inter-loaded .hero-description {
+  font-family: var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
 .hero-stats { display: flex; gap: var(--space-xl); margin-bottom: var(--space-xl); }
 .stat-item { text-align: center; }
 .stat-number { display: block; font-size: 36px; font-weight: 900; color: var(--accent-primary); margin-bottom: var(--space-xs); }
@@ -826,7 +834,7 @@ img, video, svg, canvas, iframe {
 .service-header { margin-bottom: var(--space-md); }
 .service-icon { width: 60px; height: 60px; background: var(--accent-bg); color: var(--accent-primary); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; margin-bottom: var(--space-md); }
 .service-meta { flex: 1; }
-.service-title { font-size: 20px; font-weight: 600; color: var(--text-primary); margin-bottom: var(--space-sm); }
+.service-title { font-size: 20px; font-weight: 600; color: var(--text-primary); margin-bottom: var(--space-sm);}
 .service-info { display: flex; justify-content: space-between; gap: var(--space-sm); margin-bottom: var(--space-md); }
 .service-pricing { font-size: 14px; font-weight: 600; color: var(--accent-primary); }
 .service-timeline { font-size: 14px; color: var(--text-muted); }
@@ -996,3 +1004,6 @@ img, video, svg, canvas, iframe {
 @media (max-width: 640px) {
   .control-btn--lang { min-width: 60px; padding: 0 8px; }
 }
+
+
+

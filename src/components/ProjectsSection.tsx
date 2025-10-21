@@ -8,10 +8,10 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { useLanguage, type SupportedLanguage } from '@/contexts/LanguageContext';
-import { translations } from '@/data/translations';
+import { projectsTranslations } from '@/data/translations/projects';
 
 // Types
-type LanguageKeys = keyof typeof translations; // 'en' | 'id'
+type LanguageKeys = keyof typeof projectsTranslations; // 'en' | 'id'
 
 type ProjectKey = 'quicktix' | 'abadiJaya' | (string & {})
 
@@ -21,7 +21,7 @@ type ProjectBase = {
   liveUrl: string
   githubUrl: string
   category: string
-  technologies: string[]
+  technologies: readonly string[]
   photosUrl?: string
 }
 
@@ -29,7 +29,7 @@ type ProjectLocalized = {
   title?: string
   status?: string
   description?: string
-  features?: string[]
+  features?: readonly string[]
 }
 
 type ProjectsTranslations = {
@@ -41,7 +41,7 @@ type ProjectsTranslations = {
   actions: { viewLive: string; code: string; viewPhotos: string }
   cta: { title: string; description: string; button: string }
   list?: Partial<Record<ProjectKey, ProjectLocalized>>
-  all?: ProjectBase[]
+  all?: readonly ProjectBase[]
   tooltips?: { notDeployed: string; photosUnavailable: string }
 }
 
@@ -55,7 +55,7 @@ const isValidHttpUrl = (url: string | undefined) =>
 const ProjectsSection = () => {
   const { language } = useLanguage();
   const lang: SupportedLanguage = language;
-  const t = translations[lang as LanguageKeys];
+  const t = projectsTranslations[lang as LanguageKeys];
   const pt: ProjectsTranslations = t.projects;
   // No expand/collapse state; always render all features
 
@@ -98,19 +98,10 @@ const ProjectsSection = () => {
             const hasPhotos = isValidHttpUrl(project.photosUrl);
             // Split title into two lines: before and after dash/en dash
             const rawTitle = project.title ?? project.key;
-            const splitByEnDash = rawTitle.split('–');
-            let titleLine1 = rawTitle;
-            let titleLine2 = '';
-            if (splitByEnDash.length >= 2) {
-              titleLine1 = splitByEnDash[0]?.trim() || rawTitle;
-              titleLine2 = splitByEnDash.slice(1).join('–').trim();
-            } else {
-              const splitByDash = rawTitle.split('-');
-              if (splitByDash.length >= 2) {
-                titleLine1 = splitByDash[0]?.trim() || rawTitle;
-                titleLine2 = splitByDash.slice(1).join('-').trim();
-              }
-            }
+            const splitByDash = rawTitle.split(/[-–—]/);
+            const titleLine1 = splitByDash[0]?.trim() || rawTitle;
+            const titleLine2 =
+              splitByDash.length > 1 ? splitByDash.slice(1).join(" ").trim() : "";
 
             return (
               <Card key={project.key} className="project-card h-full self-stretch min-h-[520px] !grid grid-rows-[auto,1fr]">
@@ -118,7 +109,7 @@ const ProjectsSection = () => {
                   <div className="project-image-placeholder w-full aspect-[16/9] relative">
                     <Image
                       src={project.image}
-                      alt={`${project.title ?? project.key} – ${project.category}`}
+                      alt={`${project.title ?? project.key} - ${project.category}`}
                       fill
                       sizes="(min-width: 1280px) 33vw, (min-width: 640px) 50vw, 100vw"
                       className="object-cover"

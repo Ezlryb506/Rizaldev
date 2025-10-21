@@ -4,11 +4,11 @@ import React, { useMemo, useState } from 'react';
 import { Code, Database, Bot, Zap, Terminal, Target, Search, Layout, Code2, Plug, Wrench, SearchCheck, ShieldCheck, BookOpen, Container } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { translations } from '@/data/translations';
+import { techStackTranslations } from '@/data/translations/tech-stack';
 
 const TechStackSection = () => {
   const { language } = useLanguage();
-  const t = translations[language] || translations['en'];
+  const t = techStackTranslations[language] || techStackTranslations.en;
   const [showWorkflow, setShowWorkflow] = useState(false);
 
   const techCategories = [

@@ -7,7 +7,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useAccentColor } from '@/contexts/AccentColorContext';
 import { Button } from '@/components/ui/button';
-import { translations } from '@/data/translations';
+import { coreTranslations } from '@/data/translations/core';
 
 const Header = () => {
   const { theme, setTheme, resolvedTheme } = useTheme();
@@ -15,7 +15,7 @@ const Header = () => {
   const { toggleAccentColor } = useAccentColor();
   const router = useRouter();
   const pathname = usePathname();
-  const t = translations[language] || translations['en'];
+  const t = coreTranslations[language] || coreTranslations.en;
 
   const [mounted, setMounted] = React.useState(false);
   const [mobileOpen, setMobileOpen] = React.useState(false);

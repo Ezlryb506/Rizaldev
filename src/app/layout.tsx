@@ -31,14 +31,14 @@ const inter = Inter({
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
 
-export const metadata: Metadata = {
+const baseMetadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Arizal Winangun — Fullstack Developer",
+    default: "Arizal Winangun - Fullstack Developer",
     template: "%s | Arizal Winangun",
   },
   description:
-    "Arizal Winangun — Fullstack/Frontend Developer. Jasa pembuatan website cepat, SEO-friendly, modern stack (Next.js, React, TypeScript). Terima proyek company profile, landing page, e‑commerce, dan aplikasi web. ",
+    "Portfolio of Arizal Winangun, a fullstack/frontend developer delivering fast, SEO-friendly websites built with Next.js, React, and TypeScript. Available for company profile, landing page, ecommerce, and custom web app projects.",
   keywords: [
     "Arizal Winangun",
     "Fullstack Developer",
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
     type: "website",
     url: SITE_URL,
     siteName: "Arizal Winangun",
-    title: "Arizal Winangun — Fullstack Developer",
+    title: "Arizal Winangun - Fullstack Developer",
     description:
       "Fullstack/Frontend Developer. Jasa pembuatan website cepat, SEO-friendly dengan Next.js + React.",
     locale: "en_US",
@@ -70,18 +70,22 @@ export const metadata: Metadata = {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Arizal Winangun — Fullstack Developer",
+        alt: "Arizal Winangun - Fullstack Developer",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Arizal Winangun — Fullstack Developer",
+    title: "Arizal Winangun - Fullstack Developer",
     description:
       "Fullstack/Frontend Developer. Jasa pembuatan website cepat, SEO-friendly.",
     images: ["/og-image.jpg"],
-    },
+  },
 };
+
+export async function generateMetadata(): Promise<Metadata> {
+  return baseMetadata;
+}
 
 export default async function RootLayout({
   children,
@@ -95,7 +99,25 @@ export default async function RootLayout({
     cookieLang === "id" || cookieLang === "en" ? cookieLang : "en";
   return (
     <html lang={initialLanguage} suppressHydrationWarning>
+      <head>
+        <meta
+          name="description"
+          content="Portfolio of Arizal Winangun, a fullstack/frontend developer delivering fast, SEO-friendly websites built with Next.js, React, and TypeScript. Available for company profile, landing page, ecommerce, and custom web app projects."
+        />
+        <meta
+          name="keywords"
+          content="Arizal Winangun,Fullstack Developer,Frontend Developer,Jasa pembuatan website,Web developer Indonesia,Next.js,React,TypeScript,Portfolio"
+        />
+        <link rel="canonical" href={SITE_URL} />
+        <link rel="alternate" href={`${SITE_URL}/en`} hrefLang="en" />
+        <link rel="alternate" href={`${SITE_URL}/id`} hrefLang="id" />
+      </head>
       <body className={`${inter.variable} ${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var apply=function(){document.documentElement.classList.add('font-inter-loaded');};if(document.fonts&&document.fonts.ready){document.fonts.ready.then(apply,apply);setTimeout(apply,3000);}else{apply();}}catch(e){}})();`,
+          }}
+        />
         {/* JSON-LD: Person & WebSite */}
         <script
           type="application/ld+json"
@@ -159,5 +181,3 @@ export const viewport: Viewport = {
     { media: "(prefers-color-scheme: light)", color: "#ffffff" },
   ],
 };
-
-
