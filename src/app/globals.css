@@ -258,8 +258,8 @@ img, video, svg, canvas, iframe {
 .faq-section { margin-bottom: var(--space-2xl); }
 .faq-grid { margin-top: var(--space-lg); }
 
-/* Offset content from fixed header (70px) when page starts with hero */
-.page-with-sticky-header { padding-top: 12px; }
+/* Offset content from fixed header so hero greeting clears the nav */
+.page-with-sticky-header { padding-top: 64px; }
 
 /* Header */
 .header {
