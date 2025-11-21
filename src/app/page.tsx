@@ -17,7 +17,7 @@ const ContactSection = dynamic(() => import("@/components/ContactSection"), {
 
 export default function Home() {
   return (
-    <main>
+    <main className="page-with-sticky-header">
       <HeroSection />
       <TechStackSection />
       <ServicesSection />
