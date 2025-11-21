@@ -631,7 +631,7 @@ html[lang="id"] [data-lang="en"] {
 .hero-image { display: flex; justify-content: center; align-items: center; }
 .image-container {
   position: relative;
-  width: min(400px, 100%);
+  width: clamp(280px, 30vw, 360px);
   aspect-ratio: 1 / 1; /* keep square without fixed height */
   height: auto;
 }
@@ -660,6 +660,19 @@ html[lang="id"] [data-lang="en"] {
 @keyframes float { 0%,100%{ transform: translateY(0) rotate(0deg);} 50%{ transform: translateY(-20px) rotate(180deg);} }
 
 /* Responsive: hero */
+@media (max-width: 1400px) {
+  .hero-content { gap: var(--space-xl); }
+
+  .floating-element {
+    width: 48px;
+    height: 48px;
+  }
+
+  .element-1 { top: 18%; left: 8%; }
+  .element-2 { top: 58%; right: 12%; }
+  .element-3 { bottom: 18%; left: 16%; }
+}
+
 @media (max-width: 768px) {
   .hero-content { grid-template-columns: 1fr; }
   .title-name { font-size: 44px; }
